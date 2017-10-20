@@ -3,7 +3,7 @@ require 'aws-sdk'
 class PlaylistsController < ApplicationController
 
   def index
-    RSpotify.authenticate(ENV["spotify_client_id"], ENV["spotify_secret_id"])
+    RSpotify.authenticate(ENV["SPOTIFY_CLIENT_ID"], ENV["SPOTIFY_CLIENT_SECRET"])
     # me = RSpotify::User.find('ryanmccool13')
     me = RSpotify::User.find('12122573728')
     # me.playlists.each do |playlist|

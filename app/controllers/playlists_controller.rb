@@ -23,18 +23,18 @@ class PlaylistsController < ApplicationController
     end
     file.close unless file.nil?
 
-    system "ffmpeg -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i app/assets/mylist.txt -c copy testoutput5.mp3"
+    system "ffmpeg -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i app/assets/mylist.txt -c copy test-output.mp3"
   #   system "ffmpeg -i testoutput5.mp3 -c:a aac -b:a 128k output.m4a"
   #   system "ffmpeg -loop 1 -i img.jpg -i output.m4a -c:v libx264 -c:a copy -shortest out2.mp4"
 
   #  file_name = 'output3.mp3'
-    file_name = 'testoutput5.mp3'
+    file_name = 'test-output.mp3'
 
     s3 = Aws::S3::Resource.new(region: ENV['AWS_REGION'])
     obj = s3.bucket('dbc-team-samplify-test').object(file_name)
     puts "Uploading file #{file_name}"
     # / in front of app dir?
-    obj.upload_file("/app/assets/#{file_name}")
+    obj.upload_file("app/assets/#{file_name}")
     puts "Done"
 
   end

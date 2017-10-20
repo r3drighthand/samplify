@@ -27,7 +27,17 @@ class PlaylistsController < ApplicationController
   #   system "ffmpeg -i testoutput5.mp3 -c:a aac -b:a 128k output.m4a"
   #   system "ffmpeg -loop 1 -i img.jpg -i output.m4a -c:v libx264 -c:a copy -shortest out2.mp4"
 
-  # end
+  #  file_name = 'output3.mp3'
+    file_name = 'testoutput5.mp3'
+
+    s3 = Aws::S3::Resource.new(region: ENV['AWS_REGION'])
+    obj = s3.bucket('dbc-team-samplify-test').object(file_name)
+    puts "Uploading file #{file_name}"
+    # / in front of app dir?
+    obj.upload_file("app/assets/#{file_name}")
+    puts "Done"
+
+  end
 
   # def show
   #   file_name = 'output3.mp3'
@@ -37,7 +47,7 @@ class PlaylistsController < ApplicationController
   #   puts "Uploading file #{file_name}"
   #   obj.upload_file("/Users/apprentice/Desktop/#{file_name}")
   #   puts "Done"
-  end
+  # end
 
   def destroy
     file_name = 'output3.mp3'

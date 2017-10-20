@@ -36,7 +36,7 @@ class PlaylistsController < ApplicationController
   #   puts "Uploading file #{file_name}"
   #   obj.upload_file("/Users/apprentice/Desktop/#{file_name}")
   #   puts "Done"
-  # end
+  end
 
   def destroy
     file_name = 'output3.mp3'

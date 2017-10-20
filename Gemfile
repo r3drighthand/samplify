@@ -38,6 +38,8 @@ gem 'jbuilder', '~> 2.5'
 # Samplify:
 # Ruby wrapper for Spotify
 gem 'rspotify'
+# Paperclip
+gem 'paperclip'
 # paperclip-av-transcoder
 gem 'paperclip-av-transcoder'
 

@@ -34,7 +34,7 @@ class PlaylistsController < ApplicationController
     obj = s3.bucket('dbc-team-samplify-test').object(file_name)
     puts "Uploading file #{file_name}"
     # / in front of app dir?
-    obj.upload_file("app/assets/#{file_name}")
+    obj.upload_file("/app/assets/#{file_name}")
     puts "Done"
 
   end

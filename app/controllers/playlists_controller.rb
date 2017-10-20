@@ -5,38 +5,38 @@ class PlaylistsController < ApplicationController
   def index
     RSpotify.authenticate(ENV["SPOTIFY_CLIENT_ID"], ENV["SPOTIFY_CLIENT_SECRET"])
     # me = RSpotify::User.find('ryanmccool13')
-    me = RSpotify::User.find('12122573728')
     # me.playlists.each do |playlist|
     #   puts playlist.name
     # end
     # puts me.playlists[0].tracks.first.preview_url
     # puts me.playlists[0].tracks.first.album.images
-    playlist = me.playlists.first
-    puts playlist.tracks.count
-    puts playlist.name
-    file = File.open("/Users/apprentice/Desktop/mylist.txt", 'w') #{ |file| file.write("yourtext")}
-    playlist.tracks.each do |track|
-      if track.preview_url
-        file.puts("file " + track.preview_url.to_s)
-      end
-    end
-    file.close unless file.nil?
+  #   me = RSpotify::User.find('12122573728')
+  #   playlist = me.playlists.first
+  #   puts playlist.tracks.count
+  #   puts playlist.name
+  #   file = File.open("/Users/apprentice/Desktop/mylist.txt", 'w') #{ |file| file.write("yourtext")}
+  #   playlist.tracks.each do |track|
+  #     if track.preview_url
+  #       file.puts("file " + track.preview_url.to_s)
+  #     end
+  #   end
+  #   file.close unless file.nil?
 
-    system "ffmpeg -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i /Users/apprentice/Desktop/mylist.txt -c copy testoutput5.mp3"
-    system "ffmpeg -i testoutput5.mp3 -c:a aac -b:a 128k output.m4a"
-    system "ffmpeg -loop 1 -i img.jpg -i output.m4a -c:v libx264 -c:a copy -shortest out2.mp4"
+  #   system "ffmpeg -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i /Users/apprentice/Desktop/mylist.txt -c copy testoutput5.mp3"
+  #   system "ffmpeg -i testoutput5.mp3 -c:a aac -b:a 128k output.m4a"
+  #   system "ffmpeg -loop 1 -i img.jpg -i output.m4a -c:v libx264 -c:a copy -shortest out2.mp4"
 
-  end
+  # end
 
-  def show
-    file_name = 'output3.mp3'
+  # def show
+  #   file_name = 'output3.mp3'
 
-    s3 = Aws::S3::Resource.new(region: ENV['AWS_REGION'])
-    obj = s3.bucket('dbc-team-samplify-test').object(file_name)
-    puts "Uploading file #{file_name}"
-    obj.upload_file("/Users/apprentice/Desktop/#{file_name}")
-    puts "Done"
-  end
+  #   s3 = Aws::S3::Resource.new(region: ENV['AWS_REGION'])
+  #   obj = s3.bucket('dbc-team-samplify-test').object(file_name)
+  #   puts "Uploading file #{file_name}"
+  #   obj.upload_file("/Users/apprentice/Desktop/#{file_name}")
+  #   puts "Done"
+  # end
 
   def destroy
     file_name = 'output3.mp3'

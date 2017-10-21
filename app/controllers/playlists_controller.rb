@@ -66,6 +66,9 @@ class PlaylistsController < ApplicationController
         @playlist = playlist
       end
     end
+    # @user = User.find_by(spotify_id: session[:user_id])
+    # @sampler = Sampler.find_or_create_by(user_id: @user, title: @playlist.name)
+    p @playlist.external_urls["spotify"]
     # @playlist = spotify_user.playlists.first
     @tracks = @playlist.tracks
     # @playlists = spotify_user.playlists

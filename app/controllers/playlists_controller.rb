@@ -21,6 +21,7 @@ class PlaylistsController < ApplicationController
         image_file.puts("duration 30")
       end
     end
+
     # image_file.puts("file 'tmp/#{playlist.tracks.last.id}.jpg'")
     music_file.close unless music_file.nil?
     image_file.close unless image_file.nil?

@@ -1,16 +1,15 @@
 <h1><%= @spotify_user.display_name %></h1>
 <img src="<%= @user.profile_pic_url %>">
 
-
 <%= render partial: "playlist", collection: @spotify_user.playlists %>
 
 <div class="samplers">
+<h2>Created Samplers</h2>
 <% if authorized?(@user) && @user.samplers.empty? %>
   <p>You have not made any samplers yet.</p>
 <% elsif !authorized?(@user) && @user.samplers.empty? %>
   <p><%= @user.display_name %> has not created any playlists yet. %></p>
 <% else %>
-  <h2>Created Samplers</h2>
   <%= render partial: "sampler", collection: @user.samplers %>
 <% end %>
 </div>

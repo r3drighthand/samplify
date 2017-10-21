@@ -31,14 +31,16 @@ class PlaylistsController < ApplicationController
     #   system "ffmpeg -loop 1 -i img.jpg -i output.m4a -c:v libx264 -c:a copy -shortest out2.mp4"
     # system "ffmpeg -i seventhAttempt.mp4 eighthMix.mp4"
 
-
-    # system "ffmpeg -y -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i tmp/#{playlist.name}-mp3s.txt -c:a aac  tmp/keepItSimple.m4a"
-    system "ffmpeg -y -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i tmp/#{playlist.name}-images.txt -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i tmp/#{playlist.name}-mp3s.txt -c:v libx264 -c:a aac tmp/#{playlist.name}-sampler.mp4"
+    # one line command works locally (not localhost)
+    # system "ffmpeg -y -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i tmp/#{playlist.name}-images.txt -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i tmp/#{playlist.name}-mp3s.txt -c:v libx264 -c:a aac tmp/#{playlist.name}-sampler.mp4"
+    system "ffmpeg -y -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i tmp/#{playlist.name}-mp3s.txt -c:a aac  tmp/keepItSimple.m4a"
+    system "ffmpeg -y -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i tmp/#{playlist.name}-images.txt -i tmp/keepItSimple.m4a -c:v libx264 -c:a copy tmp/#{playlist.name}-sampler.mp4"
 
     # system "ffmpeg -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i app/assets/images/#{playlist.name}-images.txt -i app/assets/images/keepItSimple.mp3 -c:a aac -b:a 128k -c:v libx264 app/assets/images/sampler.mp4"
     # ffmpeg -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i images-list.txt -c:v mpeg4 output.mp4
-    File.delete("tmp/#{playlist.name}-mp3s.txt")
-    File.delete("tmp/#{playlist.name}-images.txt")
+
+    # File.delete("tmp/#{playlist.name}-mp3s.txt")
+    # File.delete("tmp/#{playlist.name}-images.txt")
 
     @file_name= "#{playlist.name}-sampler.mp4"
 

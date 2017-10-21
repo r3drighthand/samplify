@@ -1,7 +1,8 @@
-"Hello Index!"
+"Hello Index!" <br>
 
-<%= link_to 'Sign in with Spotify', '/auth/spotify' %>
-
+<% if logged_in? %>
+  <%= link_to "User Profile", user_path(current_user) %>
+<% end %>
 <!-- <h2>It worked</h2>
 <div>
   <a href="playlists/show">Upload to S3</a>

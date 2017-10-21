@@ -70,8 +70,6 @@ class PlaylistsController < ApplicationController
     @tracks = @playlist.tracks
     # @playlists = spotify_user.playlists
     # @playlists.find_index(@playlist)
-
-
     #current_user
   end
 

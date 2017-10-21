@@ -1,4 +1,9 @@
-<h2>It worked</h2>
+"Hello Index!" <br>
+
+<% if logged_in? %>
+  <%= link_to "User Profile", user_path(current_user) %>
+<% end %>
+<!-- <h2>It worked</h2>
 <div>
   <a href="playlists/show">Upload to S3</a>
-</div>
+</div> -->

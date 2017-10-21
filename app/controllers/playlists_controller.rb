@@ -32,9 +32,10 @@ class PlaylistsController < ApplicationController
     # system "ffmpeg -i seventhAttempt.mp4 eighthMix.mp4"
 
 
-    system "ffmpeg -y -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i tmp/#{playlist.name}-mp3s.txt -c copy tmp/keepItSimple.mp3"
+    # system "ffmpeg -y -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i tmp/#{playlist.name}-mp3s.txt -c:a aac  tmp/keepItSimple.m4a"
+    system "ffmpeg -y -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i tmp/#{playlist.name}-images.txt -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i tmp/#{playlist.name}-mp3s.txt -c:v libx264 -c:a aac tmp/#{playlist.name}-sampler.mp4"
+
     # system "ffmpeg -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i app/assets/images/#{playlist.name}-images.txt -i app/assets/images/keepItSimple.mp3 -c:a aac -b:a 128k -c:v libx264 app/assets/images/sampler.mp4"
-    system "ffmpeg -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i tmp/#{playlist.name}-images.txt -i tmp/keepItSimple.mp3 -c:a aac -b:a 128k -c:v mpeg4 tmp/#{playlist.name}-sampler.mp4"
     # ffmpeg -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i images-list.txt -c:v mpeg4 output.mp4
     File.delete("tmp/#{playlist.name}-mp3s.txt")
     File.delete("tmp/#{playlist.name}-images.txt")

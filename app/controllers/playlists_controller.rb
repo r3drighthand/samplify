@@ -39,6 +39,14 @@ class PlaylistsController < ApplicationController
 
   end
 
+  # def send_simple_message
+  #   begin
+  #     RestClient.post ...
+  #   rescue RestClient::ExceptionWithResponse => e
+  #     puts e.response
+  #   end
+  # end
+
 ###############
 
   # def show

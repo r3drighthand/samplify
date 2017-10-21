@@ -8,15 +8,8 @@ class PlaylistsController < ApplicationController
     me = RSpotify::User.find('12122573728')
     playlist = me.playlists.first
 
-    # open('image.png', 'wb') do |file|
-    #   file << open('http://example.com/image.png').read
-    # end
-
-    # IO.copy_stream(open('http://example.com/image.png'), 'destination.png')
-
-
-    music_file = File.open("app/assets/images/#{playlist.name}-mp3s.txt", 'w')
-    image_file = File.open("app/assets/images/#{playlist.name}-images.txt", 'w')
+    music_file = File.open("tmp/#{playlist.name}-mp3s.txt", 'w')
+    image_file = File.open("tmp/#{playlist.name}-images.txt", 'w')
 
     playlist.tracks.each do |track|
       if track.preview_url
@@ -24,7 +17,7 @@ class PlaylistsController < ApplicationController
       end
       if track.album.images
         IO.copy_stream(open("#{track.album.images[0]["url"]}"), "tmp/#{track.id}.jpg")
-        image_file.puts("file 'tmp/#{track.id}.jpg'")
+        image_file.puts("file '#{track.id}.jpg'")
         image_file.puts("duration 30")
       end
     end
@@ -38,22 +31,22 @@ class PlaylistsController < ApplicationController
     # system "ffmpeg -i seventhAttempt.mp4 eighthMix.mp4"
 
 
-    system "ffmpeg -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i app/assets/images/#{playlist.name}-mp3s.txt -c copy app/assets/images/keepItSimple.mp3"
+    system "ffmpeg -y -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i tmp/#{playlist.name}-mp3s.txt -c copy tmp/keepItSimple.mp3"
     # system "ffmpeg -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i app/assets/images/#{playlist.name}-images.txt -i app/assets/images/keepItSimple.mp3 -c:a aac -b:a 128k -c:v libx264 app/assets/images/sampler.mp4"
-    system "ffmpeg -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i app/assets/images/#{playlist.name}-images.txt -i app/assets/images/keepItSimple.mp3 -c:a aac -b:a 128k -c:v mpeg4 app/assets/images/sampler.mp4"
+    system "ffmpeg -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i tmp/#{playlist.name}-images.txt -i tmp/keepItSimple.mp3 -c:a aac -b:a 128k -c:v mpeg4 tmp/sampler.mp4"
     # ffmpeg -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i images-list.txt -c:v mpeg4 output.mp4
-    File.delete("app/assets/images/#{playlist.name}-mp3s.txt")
-    File.delete("app/assets/images/#{playlist.name}-images.txt")
+    File.delete("tmp/#{playlist.name}-mp3s.txt")
+    File.delete("tmp/#{playlist.name}-images.txt")
 
-    @file_name= 'sampler.mp4'
+    @file_name= "#{playlist.name}-sampler.mp4"
 
     s3 = Aws::S3::Resource.new(region: ENV['AWS_REGION'])
     obj = s3.bucket('dbc-team-samplify-test').object(@file_name)
     puts "Uploading file #{@file_name}"
-    obj.upload_file("app/assets/images/#{@file_name}")
+    obj.upload_file("tmp/#{@file_name}")
     puts "Done"
 
-    File.delete("app/assets/images/#{@file_name}")
+    File.delete("tmp/#{@file_name}")
     # File.delete("app/assets/images/#{@file_name}")
     puts "Has been deleted"
   end

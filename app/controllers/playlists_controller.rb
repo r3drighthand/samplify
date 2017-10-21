@@ -8,6 +8,13 @@ class PlaylistsController < ApplicationController
     me = RSpotify::User.find('12122573728')
     playlist = me.playlists.first
 
+    # open('image.png', 'wb') do |file|
+    #   file << open('http://example.com/image.png').read
+    # end
+
+    # IO.copy_stream(open('http://example.com/image.png'), 'destination.png')
+
+
     music_file = File.open("app/assets/images/#{playlist.name}-mp3s.txt", 'w')
     image_file = File.open("app/assets/images/#{playlist.name}-images.txt", 'w')
 
@@ -16,11 +23,12 @@ class PlaylistsController < ApplicationController
         music_file.puts("file " + track.preview_url.to_s)
       end
       if track.album.images
-        image_file.puts("file '#{track.album.images[0]["url"]}'")
+        IO.copy_stream(open("#{track.album.images[0]["url"]}"), "tmp/#{track.id}.jpg")
+        image_file.puts("file 'tmp/#{track.id}.jpg'")
         image_file.puts("duration 30")
       end
     end
-    image_file.puts("file '#{playlist.tracks.last.album.images[0]["url"]}'")
+    image_file.puts("file 'tmp/#{track.id}.jpg'")
     music_file.close unless music_file.nil?
     image_file.close unless image_file.nil?
 

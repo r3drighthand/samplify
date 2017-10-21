@@ -30,9 +30,9 @@ class PlaylistsController < ApplicationController
     # system "ffmpeg -i seventhAttempt.mp4 eighthMix.mp4"
 
 
-    # system "ffmpeg -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i app/assets/images/#{playlist.name}-mp3s.txt -c copy app/assets/images/keepItSimple.mp3"
+    system "ffmpeg -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i app/assets/images/#{playlist.name}-mp3s.txt -c copy app/assets/images/keepItSimple.mp3"
     # system "ffmpeg -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i app/assets/images/#{playlist.name}-images.txt -i app/assets/images/keepItSimple.mp3 -c:a aac -b:a 128k -c:v libx264 app/assets/images/sampler.mp4"
-    system "ffmpeg -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i app/assets/images/#{playlist.name}-images.txt -c:v mpeg4 app/assets/images/sampler.mp4"
+    system "ffmpeg -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i app/assets/images/#{playlist.name}-images.txt -i app/assets/images/keepItSimple.mp3 -c:a aac -b:a 128k -c:v mpeg4 app/assets/images/sampler.mp4"
     # ffmpeg -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i images-list.txt -c:v mpeg4 output.mp4
     File.delete("app/assets/images/#{playlist.name}-mp3s.txt")
     File.delete("app/assets/images/#{playlist.name}-images.txt")
@@ -46,6 +46,7 @@ class PlaylistsController < ApplicationController
     puts "Done"
 
     File.delete("app/assets/images/#{@file_name}")
+    # File.delete("app/assets/images/#{@file_name}")
     puts "Has been deleted"
   end
 

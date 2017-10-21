@@ -8,7 +8,7 @@
 <% if authorized?(@user) && @user.samplers.empty? %>
   <p>You have not made any samplers yet.</p>
 <% elsif !authorized?(@user) && @user.samplers.empty? %>
-  <p><%= @user.display_name %> has not created any playlists yet. %></p>
+  <p><%= @user.display_name %> has not created any playlists yet.</p>
 <% else %>
   <%= render partial: "sampler", collection: @user.samplers %>
 <% end %>

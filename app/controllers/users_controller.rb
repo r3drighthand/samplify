@@ -10,6 +10,5 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @spotify_user = RSpotify::User.find(@user.spotify_id)
-    p @spotify_user.images
   end
 end

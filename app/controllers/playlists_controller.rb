@@ -29,12 +29,12 @@ class PlaylistsController < ApplicationController
     #   system "ffmpeg -loop 1 -i img.jpg -i output.m4a -c:v libx264 -c:a copy -shortest out2.mp4"
 
     system "ffmpeg -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i app/assets/images/#{playlist.name}-mp3s.txt -c copy app/assets/images/keepItSimple.mp3"
-    # system "ffmpeg -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i app/assets/images/#{playlist.name}-images.txt -i app/assets/images/keepItSimple.mp3 -c:a aac -b:a 128k -c:v libx264 app/assets/images/secondAttempt.mp4"
+    system "ffmpeg -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i app/assets/images/#{playlist.name}-images.txt -i app/assets/images/keepItSimple.mp3 -c:a aac -b:a 128k -c:v libx264 app/assets/images/sampler.mp4"
     # system "ffmpeg -i seventhAttempt.mp4 eighthMix.mp4"
-    # File.delete("app/assets/images/#{playlist.name}-mp3s.txt")
-    # File.delete("app/assets/images/#{playlist.name}-images.txt")
+    File.delete("app/assets/images/#{playlist.name}-mp3s.txt")
+    File.delete("app/assets/images/#{playlist.name}-images.txt")
 
-    @file_name= 'keepItSimple.mp3'
+    @file_name= 'sampler.mp4'
 
     s3 = Aws::S3::Resource.new(region: ENV['AWS_REGION'])
     obj = s3.bucket('dbc-team-samplify-test').object(@file_name)

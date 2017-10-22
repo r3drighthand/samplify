@@ -34,7 +34,9 @@ class PlaylistsController < ApplicationController
     # one line command works locally (not localhost)
     # system "ffmpeg -y -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i tmp/#{playlist.name}-images.txt -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i tmp/#{playlist.name}-mp3s.txt -c:v libx264 -c:a aac tmp/#{playlist.name}-sampler.mp4"
     system "ffmpeg -y -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i tmp/#{playlist.name}-mp3s.txt -c:a aac  tmp/keepItSimple.m4a"
-    system "ffmpeg -y -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i tmp/#{playlist.name}-images.txt -i tmp/keepItSimple.m4a -c:v libx264 -c:a copy tmp/#{playlist.name}-sampler.mp4"
+    system "ffmpeg -y -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i tmp/#{playlist.name}-images.txt -i tmp/keepItSimple.m4a -c:v libx264 -crf 27 -preset veryfast -c:a copy tmp/#{playlist.name}-sampler.mp4"
+
+    # ffmpeg -i input.mp4 -vcodec libx264 -crf 27 -preset veryfast -c:a copy -s 960x540 output.mp4
 
     # system "ffmpeg -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i app/assets/images/#{playlist.name}-images.txt -i app/assets/images/keepItSimple.mp3 -c:a aac -b:a 128k -c:v libx264 app/assets/images/sampler.mp4"
     # ffmpeg -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i images-list.txt -c:v mpeg4 output.mp4

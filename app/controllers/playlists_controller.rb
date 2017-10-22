@@ -75,7 +75,7 @@ class PlaylistsController < ApplicationController
     end
     # p @playlist.external_urls["spotify"]
     # @playlist = spotify_user.playlists.first
-    @tracks = @playlist.tracks
+    @tracks = @sampler.tracks
     # @playlists = spotify_user.playlists
     # @playlists.find_index(@playlist)
     #current_user

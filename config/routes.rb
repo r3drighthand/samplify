@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   resources :users
   resources :tracks
+  resources :samplers
 
   root "playlists#index"
 

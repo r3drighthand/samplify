@@ -4,7 +4,10 @@
   <p><%= track.name %></p>
   <%= image_tag track.image.url(:thumb) %>
   <%= form_for track, html: {multipart: true} do |f| %>
+    <input type="hidden" name="playlist_id" value="<%= @playlist.id %>">
     <%= f.file_field :image %>
     <%= f.submit %>
   <% end %>
 <% end %>
+
+<p>Samplify this playlist!</p>

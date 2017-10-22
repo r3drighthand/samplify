@@ -26,6 +26,8 @@ class MakeSamplerJob
 # #  case this is referenced later on.
 # #########################################
       @sampler.tracks.each do |track|
+        track_id_loc = track.id.to_s
+        track_id_loc.prepend('0') until track_id_loc.length == 3
         if track.preview_url
           music_file.puts("file " + track.preview_url.to_s)
         ######################################
@@ -33,7 +35,7 @@ class MakeSamplerJob
         # end
         # if track.image
         ######################################
-          image_file.puts("file './public/system/tracks/images/000/000/#{track.id}/original/#{track.image_file_name}.jpg'")
+          image_file.puts("file ../public/system/tracks/images/000/000/#{track_id_loc}/original/#{track.image_file_name}.jpg")
           image_file.puts("duration 30")
         end
       end

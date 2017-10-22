@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
   resources :users, only: [:index, :show]
-  resources :tracks, only: [:show]
-  resources :samplers, only: [:new]
+  resources :tracks, only: [:show, :update]
+  resources :samplers, only: [:new, :show]
 
   root "users#index"
 
@@ -10,4 +10,5 @@ Rails.application.routes.draw do
 
   delete "/logout", to: "sessions#destroy", as: :logout
 
+  get "/samplers", to: "samplers#create", as: :samplify
 end

@@ -18,4 +18,10 @@ class SamplersController < ApplicationController
     end
     @tracks = @sampler.tracks
   end
+
+  def update
+    @sampler = Sampler.find_by(params[:id])
+
+    # send to worker now?
+  end
 end

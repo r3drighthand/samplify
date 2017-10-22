@@ -38,7 +38,10 @@ class PlaylistsController < ApplicationController
     # system "ffmpeg -y -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i tmp/#{playlist.name}-mp3s.txt -c:a aac  tmp/keepItSimple.m4a"
     # system "ffmpeg -y -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i tmp/#{playlist.name}-images.txt -i tmp/keepItSimple.m4a -c:v libx264 -crf 27 -preset veryfast -c:a copy tmp/#{playlist.name}-sampler.mp4"
 
-      system "ffmpeg -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i tmp/#{playlist.name}-mp3s.txt -c copy tmp/keepItSimple.mp3"
+    # maybe try this one next
+    # ffmpeg -i audioFile.au -i videoFile.mp4 -y -acodec copy -vcodec copy mergedFile.mp4
+
+    system "ffmpeg -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i tmp/#{playlist.name}-mp3s.txt -c copy tmp/keepItSimple.mp3"
     # system "ffmpeg -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i app/assets/images/#{playlist.name}-images.txt -i app/assets/images/keepItSimple.mp3 -c:a aac -b:a 128k -c:v libx264 app/assets/images/sampler.mp4"
     system "ffmpeg -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i tmp/#{playlist.name}-images.txt -i tmp/keepItSimple.mp3 -c:a aac -c:v mpeg4 tmp/#{playlist.name}-sampler.mp4"
 
@@ -47,8 +50,8 @@ class PlaylistsController < ApplicationController
     # system "ffmpeg -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i app/assets/images/#{playlist.name}-images.txt -i app/assets/images/keepItSimple.mp3 -c:a aac -b:a 128k -c:v libx264 app/assets/images/sampler.mp4"
     # ffmpeg -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i images-list.txt -c:v mpeg4 output.mp4
 
-    # File.delete("tmp/#{playlist.name}-mp3s.txt")
-    # File.delete("tmp/#{playlist.name}-images.txt")
+    File.delete("tmp/#{playlist.name}-mp3s.txt")
+    File.delete("tmp/#{playlist.name}-images.txt")
 
     @file_name= "#{playlist.name}-sampler.mp4"
 
@@ -58,7 +61,7 @@ class PlaylistsController < ApplicationController
     obj.upload_file("tmp/#{@file_name}")
     puts "Done"
 
-    File.delete("tmp/#{@file_name}")
+    # File.delete("tmp/#{@file_name}")
     # File.delete("app/assets/images/#{@file_name}")
     puts "Has been deleted"
   end
@@ -74,6 +77,7 @@ class PlaylistsController < ApplicationController
 ###############
 
   def show
+
     # file_name= 'secondAttempt.mp4'
 
     # s3 = Aws::S3::Resource.new(region: ENV['AWS_REGION'])

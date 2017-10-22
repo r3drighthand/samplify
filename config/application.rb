@@ -18,6 +18,7 @@ Bundler.require(*Rails.groups)
 Dotenv::Railtie.load
 RSpotify::authenticate(ENV["SPOTIFY_CLIENT_ID"], ENV["SPOTIFY_CLIENT_SECRET"])
 
+
 module Samplify
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
@@ -27,6 +28,7 @@ module Samplify
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
+    config.assets.paths << "#{Rails.root}/app/assets/videos"
     # Don't generate system test files.
     config.generators.system_tests = nil
   end

@@ -1,5 +1,6 @@
 class MakeSamplerJob
   include SuckerPunch::Job
+  # Does this inherit from App_Job.rb?
 
   def perform(sampler_id)
     ActiveRecord::Base.connection_pool.with_connection do

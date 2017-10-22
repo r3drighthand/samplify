@@ -20,8 +20,8 @@ class SamplersController < ApplicationController
   end
 
   def update
-    @sampler = Sampler.find_by(params[:id])
-    MakeSamplerJob.new.async.perform(@sampler.id)
+    @sampler = Sampler.find_by(id: params[:id])
+    MakeSamplerJob.perform_async(@sampler.id)
     # user should be sent to update.html.erb here
   end
 end

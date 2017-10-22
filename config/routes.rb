@@ -9,5 +9,4 @@ Rails.application.routes.draw do
   get "/auth/spotify/callback", to: 'users#spotify'
 
   delete "/logout", to: "sessions#destroy", as: :logout
-
 end

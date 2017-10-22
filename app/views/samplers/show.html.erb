@@ -1,4 +1,5 @@
 <h2>Samplified Playlist Name</h2>
 
-<%= video_tag "https://s3.us-east-2.amazonaws.com/dbc-team-samplify-test/test-playlist-sampler.mp4", :size => "320x230", :controls => true %>
+<%= video_tag @sampler.s3_url, :size => "320x230", :controls => true %>
 
+<%= link_to "Home", user_path(current_user) %>

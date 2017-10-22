@@ -10,4 +10,5 @@ Rails.application.routes.draw do
 
   delete "/logout", to: "sessions#destroy", as: :logout
 
+  get "/samplers", to: "samplers#create", as: :samplify
 end

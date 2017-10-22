@@ -9,7 +9,7 @@ class SamplersController < ApplicationController
       end
     end
     @user = User.find_by(spotify_id: session[:user_id])
-    @sampler = Sampler.find_or_create_by(user_id: @user.id, title: @playlist.name, spotify_url: @playlist.external_urls["spotify"])
+    @sampler = Sampler.find_or_create_by(user_id: @user.id, title: @playlist.name, spotify_url: @playlist.external_urls["spotify"], samplified: false)
     session[:playlist_id] = @playlist.id
 
     if @sampler.tracks.empty?

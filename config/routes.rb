@@ -1,16 +1,10 @@
 Rails.application.routes.draw do
 
-  resources :users
-  resources :tracks
-  resources :samplers
+  resources :users, only: [:index, :show]
+  resources :tracks, only: [:show]
+  resources :samplers, only: [:new]
 
-  root "playlists#index"
-
-  # get "/playlists/show" => "playlists#show"
-
-  get "/playlists/delete" => "playlists#destroy"
-
-  get "/playlists/:id/show" => "playlists#show", as: :playlist
+  root "users#index"
 
   get "/auth/spotify/callback", to: 'users#spotify'
 

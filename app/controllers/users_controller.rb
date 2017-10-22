@@ -6,7 +6,8 @@ class UsersController < ApplicationController
 
   def spotify
     spotify_user = RSpotify::User.new(request.env['omniauth.auth'])
-    p spotify_user.display_name
+
+    # this should be a validation callback
     if spotify_user.display_name
       display_name = spotify_user.display_name
     else
@@ -18,6 +19,7 @@ class UsersController < ApplicationController
     else
       profile_pic_url = spotify_user.images[0][:url]
     end
+
     user = User.find_or_create_by(display_name: display_name, email: spotify_user.email, spotify_id: spotify_user.id, profile_pic_url: profile_pic_url)
     session[:user_id] = spotify_user.id
     redirect_to user_path(current_user)

@@ -1,4 +1,6 @@
 $(document).ready(function() {
+  $(".mySlides").hide()
+  $(".mySlides").first().show()
   var count = 1
   $("audio").on("play", function(event) {
     var play_count = count
@@ -31,21 +33,28 @@ $(document).ready(function() {
         console.log("sec 29")
       }
     if ($("audio").get(0).paused === false && (Math.floor(aud_control.currentTime) % 30 ) === 0 && play_count === 1) {
-        $("ul li").removeClass("nowPlaying")
-        $("ul li").eq(image_index).addClass("nowPlaying")
-        image_index += 1
-        console.log("sec 0")
+        image_index = Math.floor(aud_control.currentTime/30)
+        $(".mySlides").hide()
+        $(".mySlides").eq(image_index).attr("style", "display:block")
+        console.log(image_index)
       }
     }, 1000)
     count += 1
-    // console.log($(this))
-    // console.log($("video"))
-    // console.log(event.target)
-    // if (Math.floor(vid_control.currentTime) === 10) {
-    //   console.log("hey")
+
+    // var slideIndex = 0;
+    // showSlides();
+
+    // function showSlides() {
+    //   var i;
+    //   var slides = document.getElementsByClassName("mySlides");
+    //   for (i = 0; i < slides.length; i++) {
+    //     slides[i].style.display = "none";
+    //   }
+    //   slideIndex++;
+    //   if (slideIndex > slides.length) {slideIndex = 1}
+    //   slides[slideIndex-1].style.display = "block";
+    //   setTimeout(showSlides, 30000); // Change image every 2 seconds
     // }
-    // console.log("Video paused. Current time of videoplay: " + $("video").currentTime);
-    // console.log("Video paused. Current time of videoplay: " + event.target.currentTime);
   })
 
 

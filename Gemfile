@@ -48,6 +48,7 @@ gem 'aws-sdk', '~> 3'
 gem 'aws-sdk-s3', '~> 1'
 gem 'aws-sdk-ec2', '~> 1'
 gem 'rspec-rails'
+gem 'sucker_punch'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

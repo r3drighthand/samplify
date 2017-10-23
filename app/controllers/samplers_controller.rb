@@ -13,7 +13,7 @@ class SamplersController < ApplicationController
     session[:playlist_id] = @playlist.id
 
     if @sampler.tracks.empty?
-      @playlist.tracks.each do |track|
+      @playlist.tracks.take(10).each do |track|
         @track = Track.create(name: track.name, artist: track.artists[0].name, album: track.album.name, preview_url: track.preview_url, image: track.album.images[0]["url"], sampler_id: @sampler.id)
       end
     else

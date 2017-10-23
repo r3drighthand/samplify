@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show]
   resources :tracks, only: [:show, :update]
-  resources :samplers, only: [:new, :show]
+  resources :samplers, only: [:new, :show, :update]
 
   root "users#index"
 

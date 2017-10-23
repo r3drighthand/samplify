@@ -1,0 +1,80 @@
+.page-wrapper {
+  margin: 3% 0;
+  display: grid;
+  grid-gap: 10px;
+  /*align-items: stretch;*/
+  grid-template-columns: 3% 1fr 1fr 1fr 1fr 3%;
+  grid-template-areas:
+    ". a a b b ."
+    ". c c . . ."
+    ". d d d d ."
+    ". e e f f ."
+    ". e e f f ."
+    ". g g h h .";
+}
+
+.page-head {
+  grid-area: a;
+}
+
+.samplify-logo {
+  margin: 0 auto;
+  font-size: 5em;
+}
+
+.profile-head {
+  grid-area: d;
+}
+
+.profile-pic {
+  grid-area: c;
+}
+
+.page-nav {
+  grid-area: b ;
+}
+
+.align-right {
+  justify-self: end;
+}
+
+.page-content-left {
+  grid-area: e;
+  grid-column-span: 1;
+
+}
+
+.page-content-right {
+  grid-area: f;
+
+}
+
+.page-footer {
+  grid-area: ;
+}
+
+.list-style-none {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.playlist-list {
+  padding: 10px 0;
+}
+
+.centered-box {
+  align-self: center;
+  justify-self: center;
+}
+
+.center-content {
+  align-content: center;
+}
+
+.justify {
+  justify-content: center;
+}
+
+.profile-name {
+  margin: 0 auto;
+}

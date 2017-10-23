@@ -1,15 +1,26 @@
-<h1><%= @user.display_name %></h1>
-<img src="<%= @user.profile_pic_url %>">
+<div class="profile-pic profile-pic-container">
+  <img src="<%= @user.profile_pic_url %>">
+</div>
+<div class="profile-head">
+  <h4 class="profile-name"><%= @user.display_name %></h2>
+</div>
 
-<%= render partial: "playlist", collection: @spotify_user.playlists %>
+<div class="page-content-left center-content">
+  <h3>Spotify Playlists</h3>
+  <ul class="list-style-none">
+    <%= render partial: "playlist", collection: @spotify_user.playlists %>
+  </ul>
+</div>
 
-<div class="samplers">
-<h2>Created Samplers</h2>
-<% if authorized?(@user) && @user.samplers.empty? %>
-  <p>You have not made any samplers yet.</p>
-<% elsif !authorized?(@user) && @user.samplers.empty? %>
-  <p><%= @user.display_name %> has not created any playlists yet.</p>
-<% else %>
-  <%= render partial: "sampler", collection: @user.samplers %>
-<% end %>
+<div class="page-content-right center-content">
+  <h3>Created Samplers</h3>
+  <% if authorized?(@user) && @user.samplers.empty? %>
+    <p>You have not made any samplers yet.</p>
+  <% elsif !authorized?(@user) && @user.samplers.empty? %>
+    <p><%= @user.display_name %> has not created any playlists yet.</p>
+  <% else %>
+  <ul class="list-style-none">
+    <%= render partial: "sampler", collection: @user.samplers %>
+  </ul>
+  <% end %>
 </div>

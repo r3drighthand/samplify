@@ -1,5 +1,9 @@
 <h2>Samplified Playlist Name</h2>
 
-<%= video_tag @sampler.s3_url, :size => "320x230", :controls => true %>
+<% if @sampler.s3_url %>
+  <%= video_tag @sampler.s3_url, :size => "320x230", :controls => true %>
+<% else %>
+  <p>"I solemnly swear that I am up to no good."</p>
+<% end %>
 
 <%= link_to "Home", user_path(current_user) %>

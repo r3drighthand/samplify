@@ -28,6 +28,19 @@ class SamplersController < ApplicationController
   def update
     @sampler = Sampler.find_by(id: params[:id])
     MakeDownloadSamplerJob.perform_async(@sampler.id)
+    redirect_to sampler_path(@sampler)
+  end
+
+  def show
+    @sampler = Sampler.find_by(id: params[:id])
+    music_file = File.open("tmp/#{@sampler.id}-show-mp3s.txt", 'w')
+    @sampler.tracks.each do |track|
+      if track.preview_url
+        music_file.puts("file " + track.preview_url.to_s)
+      end
+    end
+    music_file.close unless music_file.nil?
+    system "ffmpeg -y -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i tmp/#{@sampler.id}-show-mp3s.txt -c:a aac -b:a 128k -c:v mpeg4 tmp/#{@sampler.id}-show-sampler.mp4"
   end
 
   # def create
@@ -92,15 +105,11 @@ class SamplersController < ApplicationController
   #   redirect_to sampler_path(@sampler)
   # end
 
-  def show
-    @spotify_user = RSpotify::User.find(session[:user_id])
-    @playlists = @spotify_user.playlists
-    @playlists.each do |playlist|
-      if playlist.id == session[:playlist_id]
-        @playlist = playlist
-      end
-    end
-    @sampler = Sampler.find_by(title: @playlist.name)
-  end
-
 end
+
+# <audio controls>
+#   <source src="<%= Rails.root %>/tmp/<%= @sampler.id %>-audio.mp3" type="audio/mp">
+#     Your browser does not support the audio tag.
+# </audio>
+
+# <%= audio_tag "#{Rails.root}/tmp/#{@sampler.id}-audio.mp3", class: "audio-play" %>

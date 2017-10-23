@@ -1,6 +1,5 @@
 <h2>Samplified Playlist Name</h2>
 
-<%= video_tag("#{Rails.root}/tmp/") %>
-
+<%= audio_tag("https://s3.us-east-2.amazonaws.com/dbc-team-samplify-test/output3.mp3", controls: true) %>
 
 <%= link_to "Home", user_path(current_user) %>

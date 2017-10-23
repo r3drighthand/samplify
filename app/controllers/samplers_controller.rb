@@ -47,14 +47,7 @@ class SamplersController < ApplicationController
       end
     end
     music_file.close unless music_file.nil?
-    system "ffmpeg -y -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i tmp/#{@sampler.id}-show-mp3s.txt -c:a aac -b:a 128k -c:v mpeg4 tmp/#{@sampler.id}-show-sampler.mp4"
+    system "ffmpeg -y -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i tmp/#{@sampler.id}-show-mp3s.txt tmp/#{@sampler.id}-show-sampler.mp3"
   end
 
 end
-
-# <audio controls>
-#   <source src="<%= Rails.root %>/tmp/<%= @sampler.id %>-audio.mp3" type="audio/mp">
-#     Your browser does not support the audio tag.
-# </audio>
-
-# <%= audio_tag "#{Rails.root}/tmp/#{@sampler.id}-audio.mp3", class: "audio-play" %>

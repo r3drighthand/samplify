@@ -106,18 +106,18 @@ class SamplersController < ApplicationController
     image_file.close unless image_file.nil?
 
     system "ffmpeg -y -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i tmp/#{@sampler.id}-mp3s.txt -c copy tmp/keepItSimple.mp3"
-    # p '*************************************'
-    # p 'After audio creation'
-    # p '*************************************'
+    p '*************************************'
+    p 'After audio creation'
+    p '*************************************'
     ########################################
-    # This is the low-qual vid codec that converts to
-    # H.264 so that it's in browser but cannot be downloaded (localhost MVP):
+    # This is the high-qual vid codec
     ########################################
-    system "ffmpeg -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i tmp/#{@sampler.id}-images.txt -i tmp/keepItSimple.mp3 -c:a aac -b:a 128k -c:v libx264 tmp/#{@sampler.id}-sampler.mp4"
+    # system "ffmpeg -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i tmp/#{@sampler.id}-images.txt -i tmp/keepItSimple.mp3 -c:a aac -b:a 128k -c:v libx264 tmp/#{@sampler.id}-sampler.mp4"
+
     ########################################
-    # This is the low-qual vid codec that works on localhost but no video
+    # This is the low-qual vid codec
     ########################################
-    # system "ffmpeg -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i tmp/#{@sampler.id}-images.txt -i tmp/keepItSimple.mp3 -c:a aac -b:a 128k -c:v mpeg4 tmp/#{@sampler.id}-sampler.mp4"
+    system "ffmpeg -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i tmp/#{@sampler.id}-images.txt -i tmp/keepItSimple.mp3 -c:a aac -b:a 128k -c:v mpeg4 tmp/#{@sampler.id}-sampler.mp4"
     @file_name= "#{@sampler.id}-sampler.mp4"
     p '*************************************'
     p 'After video creation'

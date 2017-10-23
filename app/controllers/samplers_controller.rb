@@ -112,7 +112,7 @@ class SamplersController < ApplicationController
     ########################################
     # This is the high-qual vid codec
     ########################################
-    system system "ffmpeg -loglevel 56 -y -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i tmp/#{@sampler.id}-images.txt -c:v libx264 simpleVideo.mp4"
+    system "ffmpeg -loglevel 56 -y -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i tmp/#{@sampler.id}-images.txt -c:v libx264 simpleVideo.mp4"
 
     ########################################
     # This is the low-qual vid codec

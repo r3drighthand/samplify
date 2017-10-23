@@ -32,6 +32,13 @@ class SamplersController < ApplicationController
   end
 
   def show
+    # @spotify_user = RSpotify::User.find(session[:user_id])
+    # @playlists = @spotify_user.playlists
+    # @playlists.each do |playlist|
+    #   if playlist.id == session[:playlist_id]
+    #     @playlist = playlist
+    #   end
+    # end
     @sampler = Sampler.find_by(id: params[:id])
     music_file = File.open("tmp/#{@sampler.id}-show-mp3s.txt", 'w')
     @sampler.tracks.each do |track|
@@ -42,68 +49,6 @@ class SamplersController < ApplicationController
     music_file.close unless music_file.nil?
     system "ffmpeg -y -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i tmp/#{@sampler.id}-show-mp3s.txt -c:a aac -b:a 128k -c:v mpeg4 tmp/#{@sampler.id}-show-sampler.mp4"
   end
-
-  # def create
-  #   @user = User.find_by(spotify_id: session[:user_id])
-  #   @spotify_user = RSpotify::User.find(session[:user_id])
-  #   @playlists = @spotify_user.playlists
-  #   @playlists.each do |playlist|
-  #     if playlist.id == session[:playlist_id]
-  #       @playlist = playlist
-  #     end
-  #   end
-
-  #   music_file = File.open("tmp/#{@playlist.name}-mp3s.txt", 'w')
-  #   image_file = File.open("tmp/#{@playlist.name}-images.txt", 'w')
-
-  #   p "music text file = #{music_file}"
-
-  #   @playlist.tracks.each do |track|
-  #     if track.preview_url
-  #       music_file.puts("file " + track.preview_url.to_s)
-  #     end
-  #     if track.album.images
-  #       p "start downloading image"
-  #       IO.copy_stream(open("#{track.album.images[0]["url"]}"), "tmp/#{track.id}.jpg")
-  #       image_file.puts("file '#{track.id}.jpg'")
-  #       image_file.puts("duration 30")
-  #     end
-  #   end
-
-  #   p music_file.nil?
-
-  #   music_file.close unless music_file.nil?
-  #   image_file.close unless image_file.nil?
-
-  #   system "ffmpeg -y -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i tmp/#{@playlist.name}-mp3s.txt -c copy tmp/concatuaudio.mp3"
-
-  #   p "mp3 concat complete"
-
-  #   system "ffmpeg -y -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i tmp/#{@playlist.name}-images.txt -i tmp/concatuaudio.mp3 -c:a aac -b:a 128k -c:v libx264 tmp/#{@playlist.name}-sampler.mp4"
-
-  #   p "video complete"
-
-  #   # File.delete("tmp/#{@playlist.name}-mp3s.txt")
-  #   # File.delete("tmp/#{@playlist.name}-images.txt")
-
-  #   @file_name = "#{@playlist.name}-sampler.mp4"
-
-  #   # s3 = Aws::S3::Resource.new(region: ENV['AWS_REGION'])
-  #   # obj = s3.bucket('dbc-team-samplify-test').object(@file_name)
-  #   # puts "Uploading file #{@file_name}"
-  #   # obj.upload_file("tmp/#{@file_name}")
-  #   # puts "Done"
-
-  #   # File.delete("tmp/#{@file_name}")
-  #   puts "Has been deleted"
-
-  #   @sampler = Sampler.find_by(title: @playlist.name)
-  #   @sampler.samplified = true
-  #   @sampler.s3_url = "https://s3.us-east-2.amazonaws.com/dbc-team-samplify-test/#{@file_name}"
-  #   p @sampler.save
-  #   p @sampler
-  #   redirect_to sampler_path(@sampler)
-  # end
 
 end
 

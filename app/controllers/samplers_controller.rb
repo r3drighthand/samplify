@@ -25,6 +25,11 @@ class SamplersController < ApplicationController
     @tracks = @sampler.tracks
   end
 
+  def update
+    @sampler = Sampler.find_by(id: params[:id])
+    MakeDownloadSamplerJob.perform_async(@sampler.id)
+  end
+
   # def create
   #   @user = User.find_by(spotify_id: session[:user_id])
   #   @spotify_user = RSpotify::User.find(session[:user_id])

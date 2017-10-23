@@ -12,11 +12,21 @@ require "action_cable/engine"
 require "sprockets/railtie"
 # require "rails/test_unit/railtie"
 require 'dotenv-rails'
+##########################################################
+# The guides don't mention requiring sucker_punch at all.
+# require 'sucker_punch'
+##########################################################
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 Dotenv::Railtie.load
 RSpotify::authenticate(ENV["SPOTIFY_CLIENT_ID"], ENV["SPOTIFY_CLIENT_SECRET"])
+
+###########################################################
+# This should create a simple task log file for us to examine.
+# It doesn't work. Look into it later?
+#########################################################
+# SuckerPunch.logger = Logger.new("#{Rails.root}/log/sucker_punch.log")
 
 module Samplify
   class Application < Rails::Application

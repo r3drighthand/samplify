@@ -111,7 +111,7 @@ class SamplersController < ApplicationController
     # This is the low-qual vid codec:
     ########################################
 
-    system "ffmpeg -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i tmp/#{@sampler.id}-images.txt -i tmp/keepItSimple.mp3 -c:a aac -b:a 128k -c:v ffmpeg tmp/#{@sampler.id}-sampler.mp4"
+    system "ffmpeg -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i tmp/#{@sampler.id}-images.txt -i tmp/keepItSimple.mp3 -c:a aac -b:a 128k -c:v mpeg4 tmp/#{@sampler.id}-sampler.mp4"
 
     @file_name= "#{@sampler.id}-sampler.mp4"
     s3 = Aws::S3::Resource.new(region: ENV['AWS_REGION'])

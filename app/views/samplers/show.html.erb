@@ -1,4 +1,9 @@
 <h2>Samplified Playlist Name</h2>
+<div>
+  <ul>
+    <%= render partial: @sampler.tracks %>
+  </ul>
+</div>
 
 <%= audio_tag("https://s3.us-east-2.amazonaws.com/dbc-team-samplify-test/output3.mp3", controls: true) %>
 

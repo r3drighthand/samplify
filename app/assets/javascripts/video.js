@@ -1,26 +1,41 @@
 $(document).ready(function() {
   var count = 1
-  $("video").on("play", function(event) {
+  $("audio").on("play", function(event) {
     var play_count = count
-    var vid_control = event.target
+    var aud_control = event.target
+    var image_index = 0
     window.setInterval(function() {
-      if ($("video").get(0).paused === false && (Math.floor(vid_control.currentTime) % 10) % 3 === 0 && play_count === 1) {
-        vid_control.volume = 0.7
-        console.log(vid_control.volume)
+      if ($("audio").get(0).paused === false && (Math.floor(aud_control.currentTime) % 30 ) === 1 && play_count === 1) {
+        aud_control.volume = 0.35
+        console.log(aud_control.volume)
+        console.log("sec 1")
       }
-      if ($("video").get(0).paused === false && (Math.floor(vid_control.currentTime) % 10) % 4 === 0 && play_count === 1) {
-        vid_control.volume = 0.5
-        console.log(vid_control.volume)
+      if ($("audio").get(0).paused === false && (Math.floor(aud_control.currentTime) % 30 ) === 2 && play_count === 1) {
+        aud_control.volume = 0.7
+        console.log(aud_control.volume)
+        console.log("sec 2")
       }
-      if ($("video").get(0).paused === false && (Math.floor(vid_control.currentTime) % 10) % 5 === 0 && play_count === 1) {
-        vid_control.volume = 0.7
-        console.log(vid_control.volume)
+      if ($("audio").get(0).paused === false && (Math.floor(aud_control.currentTime) % 30 ) === 3 && play_count === 1) {
+        aud_control.volume = 1.0
+        console.log(aud_control.volume)
+        console.log("sec 3")
       }
-      if ($("video").get(0).paused === false && (Math.floor(vid_control.currentTime) % 10) % 6 === 0 && play_count === 1) {
-        vid_control.volume = 1
-        console.log(vid_control.volume)
+      if ($("audio").get(0).paused === false && (Math.floor(aud_control.currentTime) % 30 ) === 28 && play_count === 1) {
+        aud_control.volume = 0.7
+        console.log(aud_control.volume)
+        console.log("sec 28")
       }
-
+      if ($("audio").get(0).paused === false && (Math.floor(aud_control.currentTime) % 30 ) === 29 && play_count === 1) {
+        aud_control.volume = 0.35
+        console.log(aud_control.volume)
+        console.log("sec 29")
+      }
+    if ($("audio").get(0).paused === false && (Math.floor(aud_control.currentTime) % 30 ) === 0 && play_count === 1) {
+        $("ul li").removeClass("nowPlaying")
+        $("ul li").eq(image_index).addClass("nowPlaying")
+        image_index += 1
+        console.log("sec 0")
+      }
     }, 1000)
     count += 1
     // console.log($(this))

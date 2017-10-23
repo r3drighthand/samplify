@@ -112,15 +112,21 @@ class SamplersController < ApplicationController
     ########################################
     # This is the high-qual vid codec
     ########################################
-    # system "ffmpeg -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i tmp/#{@sampler.id}-images.txt -i tmp/keepItSimple.mp3 -c:a aac -b:a 128k -c:v libx264 tmp/#{@sampler.id}-sampler.mp4"
+    # system "ffmpeg -loglevel 56 -y -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i tmp/#{@sampler.id}-images.txt -i tmp/keepItSimple.mp3 -c:a aac -b:a 128k -c:v libx264 tmp/#{@sampler.id}-sampler.mp4"
 
     ########################################
     # This is the low-qual vid codec
     ########################################
-    system "ffmpeg -loglevel 56 -y -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i tmp/#{@sampler.id}-images.txt -i tmp/keepItSimple.mp3 -c:a aac -b:a 128k -c:v mpeg4 tmp/#{@sampler.id}-sampler.mp4"
-    @file_name= "#{@sampler.id}-sampler.mp4"
+    system "ffmpeg -loglevel 56 -y -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i tmp/#{@sampler.id}-images.txt -c:v mpeg4 simpleVideo.mp4"
     p '*************************************'
     p 'After video creation'
+    p '*************************************'
+
+    system "ffmpeg -y -i tmp/keepItSimple.mp3 -i simpleVideo.mp4 -c:v mpeg4 -c:a aac tmp/#{@sampler.id}-sampler.mp4"
+
+    @file_name= "#{@sampler.id}-sampler.mp4"
+    p '*************************************'
+    p 'After combination'
     p @file_name
     p '*************************************'
     s3 = Aws::S3::Resource.new(region: ENV['AWS_REGION'])

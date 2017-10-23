@@ -47,7 +47,8 @@ class SamplersController < ApplicationController
       end
     end
     music_file.close unless music_file.nil?
-    system "ffmpeg -y -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i tmp/#{@sampler.id}-show-mp3s.txt tmp/#{@sampler.id}-show-sampler.mp3"
+
+    system "ffmpeg -y -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i tmp/#{@playlist.name}-mp3s.txt -c copy tmp/concatuaudio.mp3"
   end
 
 end

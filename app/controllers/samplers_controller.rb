@@ -98,7 +98,7 @@ class SamplersController < ApplicationController
         music_file.puts("file " + track.preview_url.to_s)
         ################################
         # This might work:
-        image_file.puts("file #{track.image.url(:thumb)}")
+        image_file.puts("file https:#{track.image.url(:original)}")
         image_file.puts("duration 30")
       end
     end

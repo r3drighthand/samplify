@@ -112,15 +112,21 @@ class SamplersController < ApplicationController
     ########################################
 
     system "ffmpeg -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i tmp/#{@sampler.id}-images.txt -i tmp/keepItSimple.mp3 -c:a aac -b:a 128k -c:v mpeg4 tmp/#{@sampler.id}-sampler.mp4"
-
     @file_name= "#{@sampler.id}-sampler.mp4"
+    p '*************************************'
+    p 'After video creation'
+    p @file_name
+    p '*************************************'
     s3 = Aws::S3::Resource.new(region: ENV['AWS_REGION'])
     obj = s3.bucket('dbc-team-samplify-test').object(@file_name)
     puts "Uploading file #{@file_name}"
     obj.upload_file("tmp/#{@file_name}")
     p '************************************'
     puts "Done"
+    p session[:playlist_id]
+    p session[:user_id]
     p '************************************'
+    redirect_to sampler_path(@sampler)
   end
 
   def show

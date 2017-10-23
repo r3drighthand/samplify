@@ -28,7 +28,6 @@ class SamplersController < ApplicationController
   def update
     @sampler = Sampler.find_by(id: params[:id])
     MakeDownloadSamplerJob.perform_async(@sampler.id)
-
   end
 
   # def create

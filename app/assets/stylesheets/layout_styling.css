@@ -60,26 +60,24 @@
 /* SAMPLER NEW PAGE */
 /*############################*/
 
-.playlist-link {
-}
-
-.playlist-link a {
-}
-
 .new-sampler-container {
   margin: 3% 3%;
-  height: 75%;
+  width: 100%;
 }
 
 .track-list {
+  width: 90%;
   flex-direction: column;
   height: 75%;
   position: absolute;
+  justify-content: space-evenly;
+
   overflow-y: scroll;
 }
 
 .new-sampler-title {
-  font-size: 3em;
+  font-size: 4em;
+  overflow-x: hidden;
   margin: 0;
 }
 
@@ -88,14 +86,12 @@
 }
 
 .track-container {
-  height: 300px;
-  overflow: auto;
   padding: 20px 0;
+  overflow: auto;
 }
 
 .track-info {
   width: 100%;
-  max-height: 300px;
 }
 
 .track-name {

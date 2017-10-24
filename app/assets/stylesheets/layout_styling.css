@@ -37,8 +37,12 @@
 
 .button-link a {
   text-decoration: none;
-  color: #695958;
   font-size: 2em;
+  color: #695958;
+}
+
+.button-link {
+  margin-bottom: 20px;
 }
 
 .samplify-button-block {
@@ -53,4 +57,40 @@
 
 .playlist-list {
   margin: 50px;
+}
+
+.playlist-link a {
+  text-decoration: none;
+  color: #695958;
+}
+
+.profile-pic-container {
+}
+
+.new-sampler-container {
+  margin: 3% 3%;
+  height: 100%;
+}
+
+.track-list {
+  max-height: 50%;
+}
+
+.new-sampler-title {
+  font-size: 3em;
+  margin: 0;
+}
+
+.track-container img {
+  float: right;
+}
+
+.track-container {
+  height: auto;
+  overflow: auto;
+  padding: 20px 0;
+}
+
+.track-info {
+  width: 100%;
 }

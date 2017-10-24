@@ -1,3 +1,9 @@
+// next button
+// aud_control.currentTime = Math.ceil(aud_control.currentTime/30) * 30
+
+// thumbnail navigation
+// aud_control.currentTime = ($(this).index()) * 30
+
 $(document).ready(function() {
   $(".mySlides").hide()
   $(".mySlides").first().show()
@@ -41,10 +47,6 @@ $(document).ready(function() {
       }
     }, 1000)
     count += 1
-
   })
 
-// myaudio.currentTime = 0; - This will rewind the audio to the beginning.
-
-// If you want a function to be called once the audio has finished playing then you can use 'myaudio.addEventListener('ended',myfunc)' - This will call 'myfunc()' once the audio has finished.
 })

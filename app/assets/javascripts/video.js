@@ -1,12 +1,14 @@
 $(document).on('turbolinks:load', function() {
+    console.log(window.location.href)
+  if (window.location.href.search(/(samplers\/\d+)/) > 0) {
+    console.log("meow!")
+    $(".mySlides").hide()
+    $(".mySlides").first().show()
+    var audioController = $("audio")[0]
+    audioController.volume = 0.35
+    var musicPlaying = false
+    var imageIndex = 0
 
-  console.log(window.location)
-  $(".mySlides").hide()
-  $(".mySlides").first().show()
-  var audioController = $("audio")[0]
-  audioController.volume = 0.35
-  var musicPlaying = false
-  var imageIndex = 0
   $(".thumbs").on("click", function(event){
     audioController.currentTime = ($(this).index()) * 30
     audioController.play();
@@ -60,8 +62,7 @@ $(document).on('turbolinks:load', function() {
     }, 1000)
     count += 1
   })
-
-  window.setInterval(function(){
+  var downloadChecker = setInterval(function(){
     var audioSource = $("audio").attr("src");
     var samplerID = /\d+(?=.mp3)/g.exec(audioSource);
     var url = "/samplers/check/" + samplerID
@@ -71,8 +72,8 @@ $(document).on('turbolinks:load', function() {
     request.done(function(response) {
       $(".download-link").html("")
       $(".download-link").append(response)
+      clearInterval(downloadChecker);
     });
-    // request.fail(function)
   }, 5000)
-
+}
 })

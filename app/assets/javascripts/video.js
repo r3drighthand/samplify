@@ -1,12 +1,19 @@
-$(document).ready(function() {
+$(document).on('turbolinks:load', function() {
+  console.log("ready")
   $(".mySlides").hide()
   $(".mySlides").first().show()
   var audioController = $("audio")[0]
   audioController.volume = 0.35
   var musicPlaying = false
+  var imageIndex = 0
   $(".thumbs").on("click", function(event){
     audioController.currentTime = ($(this).index()) * 30
     audioController.play();
+    imageIndex = Math.floor(audioController.currentTime/30)
+    $(".thumbs").css("opacity", 1)
+    $(".thumbs").eq(imageIndex).css( "opacity", 0.33 )
+    $(".mySlides").hide()
+    $(".mySlides").eq(imageIndex).attr("style", "display:block")
   })
   var count = 1
   $("#play").on("click", function(event) {
@@ -17,7 +24,6 @@ $(document).ready(function() {
     }
     var playCount = count
     console.log(audioController);
-    var imageIndex = 0
     console.log("start: " + audioController.volume)
     window.setInterval(function() {
       if ($("audio").get(0).paused === false && (Math.floor(audioController.currentTime) % 30 ) === 1 && playCount === 1) {
@@ -45,12 +51,10 @@ $(document).ready(function() {
           audioController.volume *= 0.7
         }
         console.log("sec 0: " + audioController.volume)
-        imageIndex = Math.floor(audioController.currentTime/30)
-        $(".mySlides").hide()
-        $(".mySlides").eq(imageIndex).attr("style", "display:block")
+        // imageIndex = Math.floor(audioController.currentTime/30)
+        // $(".mySlides").hide()
+        // $(".mySlides").eq(imageIndex).attr("style", "display:block")
         console.log(imageIndex)
-        $(".thumbs").css("opacity", 1)
-        $(".thumbs").eq(imageIndex).css( "opacity", 0.33 )
       }
     }, 1000)
     count += 1

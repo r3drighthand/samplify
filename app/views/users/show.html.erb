@@ -3,6 +3,10 @@
   <h1 class="profile-name"><%= @user.display_name %></h2>
 </div>
 
+<% if logged_in? %>
+  <%= link_to "Logout", logout_path, method: :delete %>
+<% end %>
+
 <main class="profile-page">
   <section class="page-content-left">
     <h3>Spotify Playlists</h3>

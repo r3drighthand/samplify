@@ -6,7 +6,7 @@
   <a class="next" onclick="plusSlides(1)">&#10095;</a> -->
 </div>
 
-<ul class="thumbs">
+<ul class="thumbs-container">
   <% @sampler.tracks.each do |track| %>
   <%= render partial: "thumbnail_images", locals: { track: track } %>
 <% end %>

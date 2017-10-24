@@ -9,7 +9,8 @@ class SamplersController < ApplicationController
       end
     end
     @user = User.find_by(spotify_id: session[:user_id])
-    @sampler = Sampler.find_or_create_by(user_id: @user.id, title: @playlist.name, spotify_url: @playlist.external_urls["spotify"], samplified: false)
+    @sampler = Sampler.find_or_create_by(user_id: @user.id, title: @playlist.name, spotify_url: @playlist.external_urls["spotify"])
+    # @sampler.samplified = false if !@sampler.samplified
     session[:playlist_id] = @playlist.id
 
     if @sampler.tracks.empty?
@@ -27,11 +28,12 @@ class SamplersController < ApplicationController
   end
 
   def show
-
     @sampler = Sampler.find_by(id: params[:id])
+    @tracks = []
     music_file = File.open("tmp/#{@sampler.id}-show-mp3s.txt", 'w')
     @sampler.tracks.order("created_at ASC").each do |track|
       if track.preview_url
+        @tracks << track
         music_file.puts("file " + track.preview_url.to_s)
       end
     end
@@ -49,7 +51,7 @@ class SamplersController < ApplicationController
   def check
     @sampler = Sampler.find(params[:id])
     if request.xhr? && @sampler.samplified == true
-      render "_asdf", layout: false
+      render "_download", layout: false
     end
 
   end

@@ -51,7 +51,7 @@ class SamplersController < ApplicationController
   def check
     @sampler = Sampler.find(params[:id])
     if request.xhr? && @sampler.samplified == true
-      render "_asdf", layout: false
+      render "_download", layout: false
     end
 
   end

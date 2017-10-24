@@ -51,6 +51,7 @@ class SamplersController < ApplicationController
     if request.xhr? && @sampler.samplified == true
       render "_asdf", layout: false
     end
+
   end
 
 end

@@ -1,13 +1,19 @@
-<h2>Samplified Playlist Name</h2>
-<div>
-  <ul>
-    <%= render partial: @sampler.tracks.order("created_at ASC") %>
-  </ul>
+<h2><%= @sampler.title %></h2>
+<div class="slideshow-container">
+  <%= render partial: @sampler.tracks.order("created_at ASC") %>
 </div>
 
-<%= audio_tag("https://s3.us-east-2.amazonaws.com/dbc-team-samplify-test/#{@sampler.id}.mp3", controls: true) %>
-
-<div class="download-link"></div>
+<ul class="thumbs-container">
+  <% @sampler.tracks.each do |track| %>
+  <%= render partial: "thumbnail_images", locals: { track: track } %>
+<% end %>
+</ul>
+<%= image_tag "play-button.svg", id:"play" %>
+<%= audio_tag("https://s3.us-east-2.amazonaws.com/dbc-team-samplify-test/#{@sampler.id}.mp3") %>
 
 <%= link_to "Home", user_path(current_user) %>
+
+<%= link_to "Open in Spotify", @sampler.spotify_url %>
+
+<div class="download-link"></div>
 

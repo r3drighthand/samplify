@@ -11,4 +11,6 @@ Rails.application.routes.draw do
 
   get "/samplers", to: "samplers#create", as: :samplify
 
+  get "/samplers/check/:id", to: 'samplers#check'
+
 end

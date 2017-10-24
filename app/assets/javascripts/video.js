@@ -8,7 +8,6 @@ $(document).on('turbolinks:load', function() {
     audioController.volume = 0.35
     var musicPlaying = false
     var imageIndex = 0
-
   $(".thumbs").on("click", function(event){
     audioController.currentTime = ($(this).index()) * 30
     audioController.play();
@@ -26,7 +25,6 @@ $(document).on('turbolinks:load', function() {
       audioController.pause();
     }
     var playCount = count
-    console.log(audioController);
     console.log("start: " + audioController.volume)
     window.setInterval(function() {
       if ($("audio").get(0).paused === false && (Math.floor(audioController.currentTime) % 30 ) === 1 && playCount === 1) {

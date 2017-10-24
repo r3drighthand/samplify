@@ -136,3 +136,8 @@ html {
   transition: transform 2s;
   transform-origin: top left;
 }
+
+.slide {
+  width: 100px;
+  height: 100px;
+}

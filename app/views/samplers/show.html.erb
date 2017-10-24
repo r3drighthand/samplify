@@ -1,4 +1,4 @@
-<h2>Samplified Playlist Name</h2>
+<h2><%= @sampler.title %></h2>
 <div class="slideshow-container">
   <%= render partial: @sampler.tracks %>
 
@@ -6,6 +6,13 @@
   <a class="next" onclick="plusSlides(1)">&#10095;</a> -->
 </div>
 
+<ul class="thumbs">
+  <% @sampler.tracks.each do |track| %>
+  <%= render partial: "thumbnail_images", locals: { track: track } %>
+<% end %>
+</ul>
 <%= audio_tag("https://s3.us-east-2.amazonaws.com/dbc-team-samplify-test/output3.mp3", controls: true) %>
 
 <%= link_to "Home", user_path(current_user) %>
+
+<%= link_to "Open in Spotify", @sampler.spotify_url %>

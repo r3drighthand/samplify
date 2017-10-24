@@ -3,7 +3,6 @@ $(document).ready(function() {
   $(".mySlides").first().show()
   var audioController = $("audio")[0]
   audioController.volume = 0.35
-  var musicPlaying = false
   $(".thumbs").on("click", function(event){
     audioController.currentTime = ($(this).index()) * 30
     audioController.play();
@@ -16,7 +15,6 @@ $(document).ready(function() {
       audioController.pause();
     }
     var playCount = count
-    console.log(audioController);
     var imageIndex = 0
     console.log("start: " + audioController.volume)
     window.setInterval(function() {
@@ -48,7 +46,6 @@ $(document).ready(function() {
         imageIndex = Math.floor(audioController.currentTime/30)
         $(".mySlides").hide()
         $(".mySlides").eq(imageIndex).attr("style", "display:block")
-        console.log(imageIndex)
         $(".thumbs").css("opacity", 1)
         $(".thumbs").eq(imageIndex).css( "opacity", 0.33 )
       }

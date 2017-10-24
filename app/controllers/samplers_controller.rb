@@ -13,16 +13,11 @@ class SamplersController < ApplicationController
     session[:playlist_id] = @playlist.id
 
     if @sampler.tracks.empty?
-      @playlist.tracks.each do |track|
+      @playlist.tracks.take(10).each do |track|
         @track = Track.create(name: track.name, artist: track.artists[0].name, album: track.album.name, preview_url: track.preview_url, image: track.album.images[0]["url"], sampler_id: @sampler.id)
       end
-    else
-      @sampler.tracks.each_with_index do |track, index|
-        track.image = @playlist.tracks[index].album.images[0]["url"]
-        track.save
-      end
     end
-    @tracks = @sampler.tracks
+    @tracks = @sampler.tracks.order("created_at ASC")
   end
 
   def update
@@ -32,25 +27,31 @@ class SamplersController < ApplicationController
   end
 
   def show
-    # @spotify_user = RSpotify::User.find(session[:user_id])
-    # @playlists = @spotify_user.playlists
-    # @playlists.each do |playlist|
-    #   if playlist.id == session[:playlist_id]
-    #     @playlist = playlist
-    #   end
-    # end
+
     @sampler = Sampler.find_by(id: params[:id])
     music_file = File.open("tmp/#{@sampler.id}-show-mp3s.txt", 'w')
-    @sampler.tracks.each do |track|
+    @sampler.tracks.order("created_at ASC").each do |track|
       if track.preview_url
         music_file.puts("file " + track.preview_url.to_s)
       end
     end
     music_file.close unless music_file.nil?
 
-    system "ffmpeg -y -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i tmp/testing-mp3s.txt -c copy tmp/#{@sampler.id}.mp3"
+    system "ffmpeg -y -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i tmp/#{@sampler.id}-show-mp3s.txt -c copy tmp/#{@sampler.id}.mp3"
 
-    #upload to S3
+    @file_name = "#{@sampler.id}.mp3"
+
+    s3 = Aws::S3::Resource.new(region: ENV['AWS_REGION'])
+    obj = s3.bucket('dbc-team-samplify-test').object(@file_name)
+    obj.upload_file("tmp/#{@file_name}")
+  end
+
+  def check
+    @sampler = Sampler.find(params[:id])
+    if request.xhr? && @sampler.samplified == true
+      render "_asdf", layout: false
+    end
+
   end
 
 end

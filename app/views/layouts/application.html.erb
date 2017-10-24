@@ -10,15 +10,19 @@
 
 
   </head>
-
+  <div>
+  <nav class="page-nav">
+    <% if logged_in? %>
+      <%= link_to "Logout", logout_path, method: :delete %>
+    <% else %>
+      <%= link_to 'Sign in with Spotify', '/auth/spotify' %>
+    <% end %>
+  </nav>
+  <header class="page-head">
+    <h1 class="samplify-logo">Samplify</h1>
+  </header>
   <body>
-    <nav>
-      <% if logged_in? %>
-        <%= link_to "Logout", logout_path, method: :delete %>
-      <% else %>
-        <%= link_to 'Sign in with Spotify', '/auth/spotify' %>
-      <% end %>
-    </nav><br>
     <%= yield %>
   </body>
+  </div>
 </html>

@@ -1,55 +1,55 @@
-// next button
-// aud_control.currentTime = Math.ceil(aud_control.currentTime/30) * 30
-
-// thumbnail navigation
-// aud_control.currentTime = ($(this).index()) * 30
-
 $(document).ready(function() {
   $(".mySlides").hide()
   $(".mySlides").first().show()
-  var aud_control = $("audio")[0]
+  var audioController = $("audio")[0]
+  var musicPlaying = false
   $(".thumbs").on("click", function(event){
-    aud_control.currentTime = ($(this).index()) * 30
-    aud_control.play();
+    audioController.currentTime = ($(this).index()) * 30
+    audioController.play();
   })
   var count = 1
   $("#play").on("click", function(event) {
-    aud_control.play();
-    var play_count = count
-    console.log(aud_control);
-    var image_index = 0
-    aud_control.volume = 0.35
-    console.log("start: " + aud_control.volume)
+    if(audioController.paused){
+      audioController.play();
+    } else {
+      audioController.pause();
+    }
+
+    var playCount = count
+    console.log(audioController);
+    var imageIndex = 0
+    //audioController.volume = 0.35
+    console.log("start: " + audioController.volume)
     window.setInterval(function() {
-      if ($("audio").get(0).paused === false && (Math.floor(aud_control.currentTime) % 30 ) === 1 && play_count === 1) {
-        aud_control.volume /= 0.7
-        console.log("sec 1: " + aud_control.volume)
+      if ($("audio").get(0).paused === false && (Math.floor(audioController.currentTime) % 30 ) === 1 && playCount === 1) {
+        audioController.volume /= 0.7
+        console.log("sec 1: " + audioController.volume)
       }
-      if ($("audio").get(0).paused === false && (Math.floor(aud_control.currentTime) % 30 ) === 2 && play_count === 1) {
-        aud_control.volume /= 0.7
-        console.log("sec 2: " + aud_control.volume)
+      if ($("audio").get(0).paused === false && (Math.floor(audioController.currentTime) % 30 ) === 2 && playCount === 1) {
+        audioController.volume /= 0.7
+        console.log("sec 2: " + audioController.volume)
       }
-      if ($("audio").get(0).paused === false && (Math.floor(aud_control.currentTime) % 30 ) === 3 && play_count === 1) {
-        aud_control.volume = 1
-        console.log("sec 3: " + aud_control.volume)
+      if ($("audio").get(0).paused === false && (Math.floor(audioController.currentTime) % 30 ) === 3 && playCount === 1) {
+        audioController.volume = 1
+        console.log("sec 3: " + audioController.volume)
       }
-      if ($("audio").get(0).paused === false && (Math.floor(aud_control.currentTime) % 30 ) === 28 && play_count === 1) {
-        aud_control.volume *= 0.7
-        console.log("sec 28: " + aud_control.volume)
+      if ($("audio").get(0).paused === false && (Math.floor(audioController.currentTime) % 30 ) === 28 && playCount === 1) {
+        audioController.volume *= 0.7
+        console.log("sec 28: " + audioController.volume)
       }
-      if ($("audio").get(0).paused === false && (Math.floor(aud_control.currentTime) % 30 ) === 29 && play_count === 1) {
-        aud_control.volume *= 0.7
-        console.log("sec 29: " + aud_control.volume)
+      if ($("audio").get(0).paused === false && (Math.floor(audioController.currentTime) % 30 ) === 29 && playCount === 1) {
+        audioController.volume *= 0.7
+        console.log("sec 29: " + audioController.volume)
       }
-    if ($("audio").get(0).paused === false && (Math.floor(aud_control.currentTime) % 30 ) === 0 && play_count === 1) {
-        if (aud_control.volume > 0.4) {
-          aud_control.volume *= 0.7
+    if ($("audio").get(0).paused === false && (Math.floor(audioController.currentTime) % 30 ) === 0 && playCount === 1) {
+        if (audioController.volume > 0.4) {
+          audioController.volume *= 0.7
         }
-        console.log("sec 0: " + aud_control.volume)
-        image_index = Math.floor(aud_control.currentTime/30)
+        console.log("sec 0: " + audioController.volume)
+        imageIndex = Math.floor(audioController.currentTime/30)
         $(".mySlides").hide()
-        $(".mySlides").eq(image_index).attr("style", "display:block")
-        console.log(image_index)
+        $(".mySlides").eq(imageIndex).attr("style", "display:block")
+        console.log(imageIndex)
       }
     }, 1000)
     count += 1

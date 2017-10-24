@@ -1,4 +1,9 @@
-$(document).ready(function() {
+$(window).on('load', function() {
+
+// $(document).on('pageinit',function() {
+// $(document).on('pageinit',function() {
+    console.log(window.location)
+
   $(".mySlides").hide()
   $(".mySlides").first().show()
   var count = 1

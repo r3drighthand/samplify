@@ -49,8 +49,15 @@ $(document).ready(function() {
   })
 
   window.setInterval(function(){
+    var audioSource = $("audio").attr("src");
+    var samplerID = /\d+(?=.mp3)/g.exec(audioSource);
+    var url = "/samplers/check/" + samplerID
     var request = $.ajax({
-      url: "/"
+      url: url
+    });
+    request.done(function(response) {
+      $(".download-link").html("")
+      $(".download-link").append(response)
     });
   }, 5000)
 

@@ -51,4 +51,11 @@ class SamplersController < ApplicationController
     obj.upload_file("tmp/#{@file_name}")
   end
 
+  def check
+    @sampler = Sampler.find(params[:id])
+    if request.xhr? && @sampler.samplified == true
+      render "_asdf", layout: false
+    end
+  end
+
 end

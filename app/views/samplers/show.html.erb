@@ -1,12 +1,12 @@
 <h2><%= @sampler.title %></h2>
 <div class="slideshow-container">
-  <%= render partial: @sampler.tracks.order("created_at ASC") %>
+  <%= render partial: @tracks %>
 </div>
 
 <ul class="thumbs-container">
-  <% @sampler.tracks.each do |track| %>
-  <%= render partial: "thumbnail_images", locals: { track: track } %>
-<% end %>
+  <% @tracks.each do |track| %>
+    <%= render partial: "thumbnail_images", locals: { track: track } %>
+  <% end %>
 </ul>
 <%= image_tag "play-button.svg", id:"play" %>
 <%= audio_tag("https://s3.us-east-2.amazonaws.com/dbc-team-samplify-test/#{@sampler.id}.mp3") %>

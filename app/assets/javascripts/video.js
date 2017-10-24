@@ -1,5 +1,6 @@
 $(document).on('turbolinks:load', function() {
-  console.log("ready")
+
+  console.log(window.location)
   $(".mySlides").hide()
   $(".mySlides").first().show()
   var audioController = $("audio")[0]
@@ -17,7 +18,7 @@ $(document).on('turbolinks:load', function() {
   })
   var count = 1
   $("#play").on("click", function(event) {
-    if(audioController.paused){
+    if (audioController.paused){
       audioController.play();
     } else {
       audioController.pause();
@@ -51,9 +52,9 @@ $(document).on('turbolinks:load', function() {
           audioController.volume *= 0.7
         }
         console.log("sec 0: " + audioController.volume)
-        // imageIndex = Math.floor(audioController.currentTime/30)
-        // $(".mySlides").hide()
-        // $(".mySlides").eq(imageIndex).attr("style", "display:block")
+        imageIndex = Math.floor(audioController.currentTime/30)
+        $(".mySlides").hide()
+        $(".mySlides").eq(imageIndex).attr("style", "display:block")
         console.log(imageIndex)
       }
     }, 1000)
@@ -71,6 +72,7 @@ $(document).on('turbolinks:load', function() {
       $(".download-link").html("")
       $(".download-link").append(response)
     });
+    // request.fail(function)
   }, 5000)
 
 })

@@ -7,14 +7,15 @@
 $(document).ready(function() {
   $(".mySlides").hide()
   $(".mySlides").first().show()
+  var aud_control = $("audio")[0]
   $(".thumbs").on("click", function(event){
-    $("audio")[0].currentTime = ($(this).index()) * 30
-    $("audio")[0].play();
+    aud_control.currentTime = ($(this).index()) * 30
+    aud_control.play();
   })
   var count = 1
-  $("audio").on("play", function(event) {
+  $("#play").on("click", function(event) {
+    aud_control.play();
     var play_count = count
-    var aud_control = event.target
     console.log(aud_control);
     var image_index = 0
     aud_control.volume = 0.35

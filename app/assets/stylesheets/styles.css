@@ -9,8 +9,13 @@ audio {
   height: 100px;
 }
 
-.thumbs {
-  margin: 1em;
+#play {
+  display: flex;
+  margin: auto;
+}
+
+.thumbs-container {
+  margin: 2em;
   padding: 0;
   display: flex;
   flex-wrap: wrap;

@@ -48,8 +48,10 @@ $(document).ready(function() {
     // console.log("Video paused. Current time of videoplay: " + event.target.currentTime);
   })
 
-
-
-
+  window.setInterval(function(){
+    var request = $.ajax({
+      url: "/"
+    });
+  }, 5000)
 
 })

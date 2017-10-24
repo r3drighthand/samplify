@@ -26,13 +26,24 @@ class MakeDownloadSamplerJob
       system "ffmpeg -y -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i tmp/#{@sampler.id}-images.txt -c:v libx264 tmp/simpleVideo.mp4"
 
       ########################################
-      # This is the low-qual vid codec
+      # This is the low-qual vid codec.
       ########################################
       # system "ffmpeg -loglevel 56 -y -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i tmp/#{@sampler.id}-images.txt -c:v mpeg4 simpleVideo.mp4"
 
-      system "ffmpeg -y -i tmp/keepItSimple.mp3 -i tmp/simpleVideo.mp4 -c:v libx264 -c:a aac tmp/#{@sampler.id}-sampler.mp4"
+      ########################################
+      # This is the high-qual vid codec but cannot
+      # be shared with other users.
+      ########################################
+      # system "ffmpeg -y -i tmp/keepItSimple.mp3 -i tmp/simpleVideo.mp4 -c:v libx264 -c:a aac tmp/#{@sampler.id}-sampler.mp4" # <=== DO NOT USE THIS ONE.
 
-      @file_name= "#{@sampler.id}-sampler.mp4"
+      ########################################
+      # This is the low-qual vid codec but can
+      # be shared with other users. UPLOAD THIS ONE.
+      ########################################
+
+      system "ffmpeg -y -i tmp/keepItSimple.mp3 -i tmp/simpleVideo.mp4 -c:v mpeg4 -c:a aac tmp/#{@sampler.id}-sampler.mp4"
+
+      @file_name = "#{@sampler.id}-sampler.mp4"
 
       s3 = Aws::S3::Resource.new(region: ENV['AWS_REGION'])
       obj = s3.bucket('dbc-team-samplify-test').object(@file_name)

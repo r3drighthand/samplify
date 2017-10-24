@@ -1,6 +1,6 @@
 <h2><%= @sampler.title %></h2>
 <div class="slideshow-container">
-  <%= render partial: @sampler.tracks %>
+  <%= render partial: @sampler.tracks.order("created_at ASC") %>
 </div>
 
 <ul class="thumbs-container">
@@ -9,8 +9,11 @@
 <% end %>
 </ul>
 <%= image_tag "play-button.svg", id:"play" %>
-<%= audio_tag("https://s3.us-east-2.amazonaws.com/dbc-team-samplify-test/output3.mp3") %>
+<%= audio_tag("https://s3.us-east-2.amazonaws.com/dbc-team-samplify-test/#{@sampler.id}.mp3") %>
 
 <%= link_to "Home", user_path(current_user) %>
 
 <%= link_to "Open in Spotify", @sampler.spotify_url %>
+
+<div class="download-link"></div>
+

@@ -131,3 +131,8 @@ html {
   border-radius: 15px;
   border: none;
 }
+
+.grow {
+  transition: transform 2s;
+  transform-origin: top left;
+}

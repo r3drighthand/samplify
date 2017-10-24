@@ -2,7 +2,6 @@ $(window).on('load', function() {
 
 // $(document).on('pageinit',function() {
 // $(document).on('pageinit',function() {
-    console.log(window.location)
 
   $(".mySlides").hide()
   $(".mySlides").first().show()
@@ -21,34 +20,35 @@ $(window).on('load', function() {
     }
     var playCount = count
     var imageIndex = 0
-    console.log("start: " + audioController.volume)
     window.setInterval(function() {
-      if ($("audio").get(0).paused === false && (Math.floor(audioController.currentTime) % 30 ) === 1 && playCount === 1) {
-        audioController.volume /= 0.7
-        console.log("sec 1: " + audioController.volume)
-      }
-      if ($("audio").get(0).paused === false && (Math.floor(audioController.currentTime) % 30 ) === 2 && playCount === 1) {
-        audioController.volume /= 0.7
-        console.log("sec 2: " + audioController.volume)
-      }
-      if ($("audio").get(0).paused === false && (Math.floor(audioController.currentTime) % 30 ) === 3 && playCount === 1) {
-        audioController.volume = 1
-        console.log("sec 3: " + audioController.volume)
-      }
-      if ($("audio").get(0).paused === false && (Math.floor(audioController.currentTime) % 30 ) === 28 && playCount === 1) {
-        audioController.volume *= 0.7
-        console.log("sec 28: " + audioController.volume)
-      }
-      if ($("audio").get(0).paused === false && (Math.floor(audioController.currentTime) % 30 ) === 29 && playCount === 1) {
-        audioController.volume *= 0.7
-        console.log("sec 29: " + audioController.volume)
-      }
-    if ($("audio").get(0).paused === false && (Math.floor(audioController.currentTime) % 30 ) === 0 && playCount === 1) {
+      var tar_coord_x = $(".mySlides").offset().left;
+      var tar_coord_y = $(".mySlides").offset().top;
+
+      // if ($("audio").get(0).paused === false && (Math.floor(audioController.currentTime) % 30 ) === 1 && playCount === 1) {
+      //   audioController.volume /= 0.7
+      // }
+      // if ($("audio").get(0).paused === false && (Math.floor(audioController.currentTime) % 30 ) === 2 && playCount === 1) {
+      //   audioController.volume /= 0.7
+      // }
+      // if ($("audio").get(0).paused === false && (Math.floor(audioController.currentTime) % 30 ) === 3 && playCount === 1) {
+      //   audioController.volume = 1
+      // }
+      // if ($("audio").get(0).paused === false && (Math.floor(audioController.currentTime) % 30 ) === 28 && playCount === 1) {
+      //   audioController.volume *= 0.7
+      // }
+      // if ($("audio").get(0).paused === false && (Math.floor(audioController.currentTime) % 30 ) === 29 && playCount === 1) {
+      //   audioController.volume *= 0.7
+      // }
+      if ($("audio").get(0).paused === false && (Math.floor(audioController.currentTime) % 3 ) === 0 && playCount === 1) {
         if (audioController.volume > 0.4) {
           audioController.volume *= 0.7
         }
-        console.log("sec 0: " + audioController.volume)
-        imageIndex = Math.floor(audioController.currentTime/30)
+        imageIndex = Math.floor(audioController.currentTime/3)
+        var this_coord_x = $(".thumbs").eq(imageIndex).offset().left;
+        var this_coord_y = $(".thumbs").eq(imageIndex).offset().top;
+        var move_coord_x = tar_coord_x - this_coord_x;
+        var move_coord_y = tar_coord_y - this_coord_y;
+        $(".thumbs").eq(imageIndex).css("transform", "translate(" + move_coord_x + "px, " + move_coord_y + "px) scale(10)");
         $(".mySlides").hide()
         $(".mySlides").eq(imageIndex).attr("style", "display:block")
         $(".thumbs").css("opacity", 1)

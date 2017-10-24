@@ -49,6 +49,8 @@ $(document).ready(function() {
         $(".mySlides").hide()
         $(".mySlides").eq(imageIndex).attr("style", "display:block")
         console.log(imageIndex)
+        $(".thumbs").css("opacity", 1)
+        $(".thumbs").eq(imageIndex).css( "opacity", 0.33 )
       }
     }, 1000)
     count += 1

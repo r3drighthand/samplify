@@ -1,12 +1,28 @@
-<h2><%= @playlist.name %></h2>
+<div class="sub-head">
+  <h2><%= @playlist.name %></h2>
+  <div class="button-link">
+    <%= link_to sampler_path(@sampler), method: :patch do %>
+      <div class="button-block">
+        Samplify this playlist!
+      </div>
+    <% end %>
+  </div>
+</div>
 
+<div class="track-list">
 <% @tracks.each do |track| %>
-  <p><%= track.name %></p>
-  <%= image_tag track.image.url(:thumb) %>
-  <%= form_for track, html: {multipart: true} do |f| %>
-    <%= f.file_field :image %>
-    <%= f.submit %>
-  <% end %>
+  <div class="track-container">
+    <div class="track-image">
+      <%= image_tag track.image.url(:medium) %>
+    </div>
+    <div class="track-input">
+      <h3 class="track-name"><%= track.name %></h3>
+      <%= form_for track, html: {multipart: true} do |f| %>
+        <%= f.file_field :image %>
+        <%= f.submit %>
+      <% end %>
+    </div>
+  </div>
 <% end %>
+</div>
 
-<%= link_to "Samplify this playlist!", sampler_path(@sampler), method: :patch %>

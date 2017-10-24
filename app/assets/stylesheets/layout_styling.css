@@ -1,25 +1,20 @@
-/*html, body {
-  height: 100%;
-}*/
+
 
 .profile-page {
   display: flex;
+  justify-content: space-evenly;
+  height: 75%;
+  position: absolute;
 }
 
 .page-content-left {
-  flex: 1 1 auto;
   padding-right: 5px;
-  height: 1000px;
-  width: 100%;
   overflow-y: scroll;
   overflow-x: hidden;
   border: 1px solid black;
 }
 
 .page-content-right {
-  flex: 1 1 auto;
-  height: 1000px;
-  width: 100%;
   padding-left: 5px;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -46,17 +41,13 @@
 }
 
 .samplify-button-block {
-  width: 300px;
-  margin: 5px 0;
-  background-color: #4DCCBD;
-  padding: 20px 0;
-  text-align: center;
-  border-radius: 15px;
-  border: none;
 }
 
 .playlist-list {
   margin: 50px;
+}
+
+.playlist-link {
 }
 
 .playlist-link a {
@@ -65,6 +56,7 @@
 }
 
 .profile-pic-container {
+  height: 400px;
 }
 
 .new-sampler-container {
@@ -86,11 +78,17 @@
 }
 
 .track-container {
-  height: auto;
+  height: 300px;
   overflow: auto;
   padding: 20px 0;
 }
 
 .track-info {
   width: 100%;
+  max-height: 300px;
+}
+
+.track-name {
+  font-size: 4em;
+  overflow-x: hidden;
 }

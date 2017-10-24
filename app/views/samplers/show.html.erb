@@ -1,7 +1,7 @@
 <h2>Samplified Playlist Name</h2>
 <div>
   <ul>
-    <%= render partial: @sampler.tracks %>
+    <%= render partial: @sampler.tracks.order("created_at ASC") %>
   </ul>
 </div>
 

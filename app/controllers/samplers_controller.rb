@@ -30,7 +30,7 @@ class SamplersController < ApplicationController
 
     @sampler = Sampler.find_by(id: params[:id])
     music_file = File.open("tmp/#{@sampler.id}-show-mp3s.txt", 'w')
-    @sampler.tracks.each do |track|
+    @sampler.tracks.order("created_at ASC").each do |track|
       if track.preview_url
         music_file.puts("file " + track.preview_url.to_s)
       end

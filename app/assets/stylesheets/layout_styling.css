@@ -1,120 +1,43 @@
-html {
-  background-color: #114B5F;
+/** {
+  box-sizing: border-box;
+}*/
+
+html, body {
+  height: 97%;
 }
 
-.page-wrapper {
-  margin: 3% 0;
-  display: grid;
-  grid-gap: 10px;
-  /*align-items: stretch;*/
-  grid-template-columns: 3% 1fr 1fr 1fr 1fr 3%;
-  grid-template-areas:
-    ". a a b b ."
-    ". c c . . ."
-    ". d d d d ."
-    ". e e f f ."
-    ". e e f f ."
-    ". g g h h .";
-}
-
-.page-head {
-  grid-area: a;
-}
-
-.samplify-logo {
-  margin: 0 auto;
-  font-size: 5em;
-}
-
-.sub-head {
-  grid-area: c;
-}
-
-.track-list {
-  grid-area: d;
-}
-
-.main-sub {
-  grid-area: d;
-}
-
-.track-image img {
-  display: inline-block;
-  width: 298px;
-  height: 298px;
-  border: 10px solid #4DCCBD;
-  border-radius: 5px;
-  overflow: hidden;
-}
-
-.track-input {
-  display: inline-block;
-  width: 100%;
-  margin-bottom: 10px;
-}
-
-.edit_track input {
-  padding: 5px;
-  font-size: 1em;
-}
-
-.profile-pic {
-  grid-area: c;
-}
-
-.page-nav {
-  grid-area: b ;
-}
-
-.align-right {
-  justify-self: end;
+.profile-page {
+  display: flex;
+  padding: 3% 5%;
+  height: 100%;
+  position: absolute;
 }
 
 .page-content-left {
-  grid-area: e;
-  grid-column-span: 1;
-
+  padding-right: 5px;
+  height: 50%;
+  width: 100%;
+  flex: 1 1 auto;
+  overflow-y: scroll;
+  border: 1px solid black;
 }
 
 .page-content-right {
-  grid-area: f;
-
+  flex: 1 1 auto;
+  height: 50%;
+  width: 100%;
+  padding-left: 5px;
+  overflow-y: scroll;
+  border: 1px solid black;
 }
 
-.page-footer {
-  grid-area: ;
+.playlists {
+  font-size: 2em;
 }
 
 .list-style-none {
   list-style-type: none;
   padding-left: 0;
-}
-
-.playlist-list {
-  padding: 10px 0;
-}
-
-.centered-box {
-  align-self: center;
-  justify-self: center;
-}
-
-.center-content {
-  align-content: center;
-}
-
-.justify {
-  justify-content: center;
-}
-
-.profile-name {
-  margin: 0 auto;
-}
-
-.track-name {
-  font-size: 3em;
-  display: inline-block;
-  margin: 0;
 }
 
 .button-link a {

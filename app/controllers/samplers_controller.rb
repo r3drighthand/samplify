@@ -16,13 +16,8 @@ class SamplersController < ApplicationController
       @playlist.tracks.take(10).each do |track|
         @track = Track.create(name: track.name, artist: track.artists[0].name, album: track.album.name, preview_url: track.preview_url, image: track.album.images[0]["url"], sampler_id: @sampler.id)
       end
-    else
-      @sampler.tracks.each_with_index do |track, index|
-        track.image = @playlist.tracks[index].album.images[0]["url"]
-        track.save
-      end
     end
-    @tracks = @sampler.tracks
+    @tracks = @sampler.tracks.order("created_at ASC")
   end
 
   def update

@@ -8,7 +8,7 @@ class MakeDownloadSamplerJob
 
       music_file = File.open("tmp/#{@sampler.id}-mp3s.txt", 'w')
       image_file = File.open("tmp/#{@sampler.id}-images.txt", 'w')
-      @sampler.tracks.each do |track|
+      @sampler.tracks.order("created_at ASC").each do |track|
         if track.preview_url
           music_file.puts("file " + track.preview_url.to_s)
           image_file.puts("file https:#{track.image.url(:original)}")

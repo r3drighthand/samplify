@@ -1,3 +1,7 @@
+html {
+  background-color: #114B5F;
+}
+
 .page-wrapper {
   margin: 3% 0;
   display: grid;
@@ -22,8 +26,36 @@
   font-size: 5em;
 }
 
-.profile-head {
+.sub-head {
+  grid-area: c;
+}
+
+.track-list {
   grid-area: d;
+}
+
+.main-sub {
+  grid-area: d;
+}
+
+.track-image img {
+  display: inline-block;
+  width: 298px;
+  height: 298px;
+  border: 10px solid #4DCCBD;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.track-input {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.edit_track input {
+  padding: 5px;
+  font-size: 1em;
 }
 
 .profile-pic {
@@ -77,4 +109,25 @@
 
 .profile-name {
   margin: 0 auto;
+}
+
+.track-name {
+  font-size: 3em;
+  display: inline-block;
+  margin: 0;
+}
+
+.button-link a {
+  text-decoration: none;
+  color: #695958;
+  font-size: 2em;
+}
+
+.button-block {
+  width: 300px;
+  background-color: #4DCCBD;
+  padding: 20px 0;
+  text-align: center;
+  border-radius: 15px;
+  border: none;
 }

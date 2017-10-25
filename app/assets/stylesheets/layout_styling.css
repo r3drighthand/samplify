@@ -6,10 +6,11 @@
 /* USER SHOW/PROFILE: FLEXBOX; */
 /*###############################*/
 .profile-page {
-  display: flex;
+/*  display: flex;*/
   justify-content: space-evenly;
   height: 75%;
   padding-bottom: 150px;
+  width: 100%;
 }
 
 .playlist-link {
@@ -21,19 +22,27 @@
 }
 
 .page-content-left {
+  height: 100%;
+  width: 100%;
   padding-right: 5px;
   /*overflow-y: scroll;*/
   overflow-x: hidden;
   border: 1px solid black;
-  flex: 1;
+  display: block;
+  position: absolute;
+/*  flex: 1;*/
 }
 
 .page-content-right {
+  height: 100%;
+  width: 100%;
   padding-left: 5px;
  /* overflow-y: scroll;*/
   overflow-x: hidden;
   border: 1px solid black;
-  flex: 1;
+  display: none;
+  position: absolute;
+/*  flex: 1;*/
 }
 
 /*###########################*/

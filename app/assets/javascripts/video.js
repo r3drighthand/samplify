@@ -1,7 +1,8 @@
 $(document).on('turbolinks:load', function() {
-  var tar_coord_x = $(".slideshow-container").offset().left;
-  var tar_coord_y = $(".slideshow-container").offset().top;
   if (window.location.href.search(/(samplers\/\d+)/) > 0) {
+    var tar_coord_x = $(".slideshow-container").offset().left;
+    var tar_coord_y = $(".slideshow-container").offset().top;
+    $("#pause").hide()
     $(".mySlides").hide()
     $(".mySlides").first().show()
     var audioController = $("audio")[0]
@@ -18,11 +19,15 @@ $(document).on('turbolinks:load', function() {
       }
     })
     var count = 1
-    $("#play").on("click", function(event) {
+    $("#play-buttons").on("click", function(event) {
       if (audioController.paused){
         audioController.play();
+        $("#pause").show()
+        $("#play").hide()
       } else {
         audioController.pause();
+        $("#play").show()
+        $("#pause").hide()
       }
       var playCount = count
       setInterval(function() {
@@ -64,7 +69,6 @@ $(document).on('turbolinks:load', function() {
       count += 1
       }, 1000)
     })
-
     var downloadChecker = setInterval(function(){
       var audioSource = $("audio").attr("src");
       var samplerID = /\d+(?=.mp3)/g.exec(audioSource);
@@ -79,12 +83,13 @@ $(document).on('turbolinks:load', function() {
       });
     }, 5000)
   } else {
-    for (var i = 1; i < 9999; i++)
+    for (var i = 1; i < 9999; i++) {
       window.clearInterval(i)
+    }
   }
 })
 
-function thumbToOriginal(tar_coord_x, tar_coord_y, imageIndex = 0) {
+function thumbToOriginal(tar_coord_x, tar_coord_y, imageIndex) {
   var this_coord_x = $(".thumbs").eq(imageIndex).offset().left;
   var this_coord_y = $(".thumbs").eq(imageIndex).offset().top;
   console.log("this: ", this_coord_x, this_coord_y)

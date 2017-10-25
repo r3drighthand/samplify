@@ -1,4 +1,4 @@
-<h2><%= @sampler.title %></h2>
+<h2 class="sampler-title"><%= @sampler.title %></h2>
 <div class="slideshow-container">
   <%= render partial: @tracks %>
 </div>
@@ -8,19 +8,23 @@
     <%= render partial: "thumbnail_images", locals: { track: track } %>
   <% end %>
 </ul>
-<%= image_tag "play-button.svg", id:"play" %>
+
+<div id="play-buttons">
+  <%= image_tag "pause.png", id:"pause" %>
+  <%= image_tag "play.png", id:"play" %>
+</div>
+
 <%= audio_tag("https://s3.us-east-2.amazonaws.com/dbc-team-samplify-test/#{@sampler.id}.mp3") %>
 
+<div class="show-buttons-container">
+  <% if logged_in? %>
+    <%= link_to "Home", user_path(current_user), class: "left" %>
+    <div class="download-link"></div>
+  <% else %>
+    <%= link_to 'Sign in with Spotify', '/auth/spotify?show_dialog=true', class: "left" %>
+  <% end %>
 
-<% if logged_in? %>
-  <%= button_to "Home", user_path(current_user), class: "button" %>
-  <div class="download-link"></div>
-<% else %>
-  <%= button_to 'Sign in with Spotify', '/auth/spotify?show_dialog=true', class: "button" %>
-<% end %>
-
-
-
-<%= link_to "Open in Spotify", @sampler.spotify_url %>
+  <%= link_to "Open in Spotify", @sampler.spotify_url, class: "right" %>
+</div>
 
 

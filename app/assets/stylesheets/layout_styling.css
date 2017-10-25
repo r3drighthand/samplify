@@ -25,6 +25,7 @@
   /*overflow-y: scroll;*/
   overflow-x: hidden;
   border: 1px solid black;
+  flex: 1;
 }
 
 .page-content-right {
@@ -32,6 +33,7 @@
  /* overflow-y: scroll;*/
   overflow-x: hidden;
   border: 1px solid black;
+  flex: 1;
 }
 
 /*###########################*/
@@ -92,6 +94,7 @@
 .track-container {
   padding: 20px 0;
   overflow: auto;
+  height: 300px;
 }
 
 .track-info {

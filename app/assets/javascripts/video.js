@@ -1,7 +1,6 @@
 $(document).on('turbolinks:load', function() {
   var tar_coord_x = $(".slideshow-container").offset().left;
   var tar_coord_y = $(".slideshow-container").offset().top;
-  console.log($(".slideshow-container").offset())
   if (window.location.href.search(/(samplers\/\d+)/) > 0) {
     $(".mySlides").hide()
     $(".mySlides").first().show()

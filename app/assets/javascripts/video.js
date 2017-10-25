@@ -74,23 +74,26 @@ $(document).on('turbolinks:load', function() {
             $(".mySlides").eq(slideIndex).attr("style", "display:block")
             thumbToOriginal(tar_coord_x, tar_coord_y, imageIndex);
           }
-        }
-      }, 1000)
+        }, 1000)
       count += 1
-    })
-    // var downloadChecker = setInterval(function(){
-    //   var audioSource = $("audio").attr("src");
-    //   var samplerID = /\d+(?=.mp3)/g.exec(audioSource);
-    //   var url = "/samplers/check/" + samplerID
-    //   var request = $.ajax({
-    //     url: url
-    //   });
-    //   request.done(function(response) {
-    //     $(".download-link").html("")
-    //     $(".download-link").append(response)
-    //     clearInterval(downloadChecker);
-    //   });
-    // }, 5000)
+    }
+
+    var downloadChecker = setInterval(function(){
+      var audioSource = $("audio").attr("src");
+      var samplerID = /\d+(?=.mp3)/g.exec(audioSource);
+      var url = "/samplers/check/" + samplerID
+      var request = $.ajax({
+        url: url
+      });
+      request.done(function(response) {
+        $(".download-link").html("")
+        $(".download-link").append(response)
+        clearInterval(downloadChecker);
+      });
+    }, 5000)
+  } else {
+    for (var i = 1; i < 9999; i++)
+      window.clearInterval(i)
   }
 })
 

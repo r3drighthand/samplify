@@ -16,6 +16,11 @@
       <%= image_tag track.image.url(:medium), class: "paperclip-preview" %>
       <div class="track-info">
         <h3 class="track-name"><%= track.name %></h3>
+        <p class="errors">
+          <% if !track.preview_url %>
+            <%= @message %>
+          <% end %>
+        </p>
         <%= form_for track, html: {multipart: true} do |f| %>
           <%= f.file_field :image %>
           <%= f.submit %>

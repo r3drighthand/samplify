@@ -45,13 +45,17 @@ $(document).on('turbolinks:load', function() {
           if (audioController.volume > 0.4) {
             audioController.volume *= 0.7
           }
+        }
+      }, 1000)
+      setInterval(function() {
+        if ($("audio").get(0).paused === false && (Math.floor(audioController.currentTime) % 30 ) === 0 && playCount === 1) {
           imageIndex = Math.floor(audioController.currentTime/30)
           $(".mySlides").hide()
           $(".mySlides").eq(imageIndex).attr("style", "display:block")
           $(".thumbs").css("opacity", 1)
           $(".thumbs").eq(imageIndex).css( "opacity", 0.33 )
         }
-      }, 1000)
+      }, 500)
       count += 1
     })
     var downloadChecker = setInterval(function(){
@@ -67,5 +71,8 @@ $(document).on('turbolinks:load', function() {
         clearInterval(downloadChecker);
       });
     }, 5000)
+  } else {
+    for (var i = 1; i < 9999; i++)
+      window.clearInterval(i)
   }
 })

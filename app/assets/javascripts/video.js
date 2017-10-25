@@ -1,21 +1,21 @@
 $(document).on('turbolinks:load', function() {
+  var tar_coord_x = $(".slideshow-container").offset().left;
+  var tar_coord_y = $(".slideshow-container").offset().top;
   if (window.location.href.search(/(samplers\/\d+)/) > 0) {
     $(".mySlides").hide()
     $(".mySlides").first().show()
     var audioController = $("audio")[0]
     audioController.volume = 0.35
     var imageIndex = 0
+    var slideIndex = 0
+    thumbToOriginal(tar_coord_x, tar_coord_y, imageIndex);
+    $(".thumbs").eq(imageIndex+1).css( "opacity", 0.33 )
     $(".thumbs").on("click", function(event){
       audioController.volume = 0.35
-      audioController.currentTime = ($(this).index()) * 30
+      audioController.currentTime = ($(this).parent().index()) * 30
       if (audioController.paused){
         $("#play").trigger( "click" );
       }
-      imageIndex = Math.floor(audioController.currentTime/30)
-      $(".thumbs").css("opacity", 1)
-      $(".thumbs").eq(imageIndex).css( "opacity", 0.33 )
-      $(".mySlides").hide()
-      $(".mySlides").eq(imageIndex).attr("style", "display:block")
     })
     var count = 1
     $("#play").on("click", function(event) {
@@ -45,19 +45,26 @@ $(document).on('turbolinks:load', function() {
           if (audioController.volume > 0.4) {
             audioController.volume *= 0.7
           }
+          if ($(".thumbs").first().hasClass('start')) {
+            $(".thumbs").first().removeClass("start")
+            $(".thumbs").first().addClass("grow")
+          }
+          var startingIndex = slideIndex
+          if (startingIndex != Math.floor(audioController.currentTime/30)) {
+            originalToThumb(imageIndex);
+            slideIndex = Math.floor(audioController.currentTime/30)
+            imageIndex = slideIndex * 2
+            $(".thumbs").css("opacity", 1)
+            $(".thumbs").eq(imageIndex+1).css( "opacity", 0.33 )
+            $(".mySlides").hide()
+            $(".mySlides").eq(slideIndex).attr("style", "display:block")
+            thumbToOriginal(tar_coord_x, tar_coord_y, imageIndex);
+          }
         }
-      }, 1000)
-      setInterval(function() {
-        if ($("audio").get(0).paused === false && (Math.floor(audioController.currentTime) % 30 ) === 0 && playCount === 1) {
-          imageIndex = Math.floor(audioController.currentTime/30)
-          $(".mySlides").hide()
-          $(".mySlides").eq(imageIndex).attr("style", "display:block")
-          $(".thumbs").css("opacity", 1)
-          $(".thumbs").eq(imageIndex).css( "opacity", 0.33 )
-        }
-      }, 500)
       count += 1
+      }, 1000)
     })
+
     var downloadChecker = setInterval(function(){
       var audioSource = $("audio").attr("src");
       var samplerID = /\d+(?=.mp3)/g.exec(audioSource);
@@ -76,3 +83,17 @@ $(document).on('turbolinks:load', function() {
       window.clearInterval(i)
   }
 })
+
+function thumbToOriginal(tar_coord_x, tar_coord_y, imageIndex = 0) {
+  var this_coord_x = $(".thumbs").eq(imageIndex).offset().left;
+  var this_coord_y = $(".thumbs").eq(imageIndex).offset().top;
+  console.log("this: ", this_coord_x, this_coord_y)
+  var move_coord_x = tar_coord_x - this_coord_x;
+  var move_coord_y = tar_coord_y - this_coord_y;
+  console.log("move: ", move_coord_x, move_coord_y)
+  $(".thumbs").eq(imageIndex).css("transform", "translate(" + move_coord_x + "px, " + move_coord_y + "px) scale(10)");
+}
+
+function originalToThumb(imageIndex) {
+  $(".thumbs").eq(imageIndex).css("transform", "");
+}

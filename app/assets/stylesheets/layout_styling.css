@@ -103,5 +103,21 @@
 
 .track-name {
   font-size: 3em;
-  overflow-x: hidden;
+  display: inline-block;
+  margin: 0;
+}
+
+.button-link a {
+  text-decoration: none;
+  color: #695958;
+  font-size: 2em;
+}
+
+.button-block {
+  width: 300px;
+  background-color: #4DCCBD;
+  padding: 20px 0;
+  text-align: center;
+  border-radius: 15px;
+  border: none;
 }

@@ -61,3 +61,39 @@ audio {
   from {opacity: .4}
   to {opacity: 1}
 }
+
+/*Animation CSS*/
+
+.start {
+  transition: transform 0s;
+  transform-origin: top left;
+}
+
+.grow {
+  transition: transform 2s;
+  transform-origin: top left;
+}
+
+.slide {
+  width: 100px;
+  height: 100px;
+}
+
+.dupe-thumbs {
+  width: 100px;
+  height: 100px;
+  position: relative;
+}
+
+.thumbs {
+  top: 0;
+  left: 0;
+  position: absolute;
+}
+
+.slide-location {
+  width: 1000px;
+  height: 1000px;
+}
+
+

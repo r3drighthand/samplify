@@ -50,17 +50,14 @@ $(document).on('turbolinks:load', function() {
           // if (audioController.volume > 0.4) {
           //   audioController.volume *= 0.7
           // }
+          originalToThumb(imageIndex);
           imageIndex = (Math.floor(audioController.currentTime/3) * 2) + 2
           slideIndex = (imageIndex - 2) / 2 + 1
-          // $(".mySlides").hide()
-          // $(".mySlides").eq(imageIndex).attr("style", "display:block")
-          // $(".thumbs").css("opacity", 1)
-          // $(".thumbs").eq(imageIndex).css( "opacity", 0.33 )
-          console.log("start")
-          console.log($(".slideshow-container").offset())
-          thumbToOriginal(tar_coord_x, tar_coord_y, imageIndex);
+          $(".thumbs").css("opacity", 1)
+          $(".thumbs").eq(imageIndex+1).css( "opacity", 0.33 )
           $(".mySlides").hide()
           $(".mySlides").eq(slideIndex).attr("style", "display:block")
+          thumbToOriginal(tar_coord_x, tar_coord_y, imageIndex);
         }
       }, 1000)
       count += 1
@@ -86,8 +83,9 @@ function thumbToOriginal(tar_coord_x, tar_coord_y, imageIndex = 0) {
   var this_coord_y = $(".thumbs").eq(imageIndex).offset().top;
   var move_coord_x = tar_coord_x - this_coord_x;
   var move_coord_y = tar_coord_y - this_coord_y;
-  console.log("starting coord:" + this_coord_y, this_coord_x)
-  console.log("target coord: " + tar_coord_y, tar_coord_x)
-  console.log("difference: " + move_coord_y, move_coord_x)
   $(".thumbs").eq(imageIndex).css("transform", "translate(" + move_coord_x + "px, " + move_coord_y + "px) scale(10)");
+}
+
+function originalToThumb(imageIndex) {
+  $(".thumbs").eq(imageIndex).css("transform", "");
 }

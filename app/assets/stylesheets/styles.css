@@ -64,7 +64,7 @@ p {
   font-weight: bold;
 }
 
-.playlist-header, .sampler-header {
+.playlist-button, .sampler-button {
   font-family: 'Francoise One', sans-serif;
   font-size: 3em;
   color: #FFF1D0;

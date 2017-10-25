@@ -19,6 +19,7 @@ class SamplersController < ApplicationController
       end
     end
     @tracks = @sampler.tracks.order("created_at ASC")
+    @message = "Sorry, Spotify doesn't have a preview available for this song."
   end
 
   def update

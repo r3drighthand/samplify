@@ -66,6 +66,16 @@ p {
   color: #FFF1D0;
 }
 
+.new-sampler-title {
+  font-family: 'Permanent Marker', sans-serif;
+  color: #EB6534;
+}
+
+.track-name {
+  font-family: 'Permanent Marker', sans-serif;
+  color: #437F97;
+}
+
 .thumbs-container {
   margin: 2em;
   padding: 0;

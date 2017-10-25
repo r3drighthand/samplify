@@ -9,11 +9,11 @@ $(document).on('turbolinks:load', function() {
     audioController.volume = 0.35
     var imageIndex = 0
     $(".thumbs").on("click", function(event){
+      audioController.volume = 0.35
       audioController.currentTime = ($(this).index()) * 30
       if (audioController.paused){
         $("#play").trigger( "click" );
       }
-      $("#play").trigger( "click" );
       imageIndex = Math.floor(audioController.currentTime/30)
       $(".thumbs").css("opacity", 1)
       $(".thumbs").eq(imageIndex).css( "opacity", 0.33 )
@@ -58,6 +58,8 @@ $(document).on('turbolinks:load', function() {
           imageIndex = Math.floor(audioController.currentTime/30)
           $(".mySlides").hide()
           $(".mySlides").eq(imageIndex).attr("style", "display:block")
+          $(".thumbs").css("opacity", 1)
+          $(".thumbs").eq(imageIndex).css( "opacity", 0.33 )
           console.log(imageIndex)
         }
       }, 1000)

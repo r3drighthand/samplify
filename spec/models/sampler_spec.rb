@@ -10,4 +10,5 @@ describe Sampler do
   end
 
   it "is invalid without a user"
+  it "belongs to one user"
 end

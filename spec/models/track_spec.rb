@@ -11,4 +11,5 @@ describe Track do
 
   it "is invalid without a sampler"
   it "is invalid without a name"
+  it "belongs to a sampler"
 end

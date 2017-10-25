@@ -22,8 +22,9 @@ class MakeDownloadSamplerJob
       ########################################
       # This is the high-qual vid codec
       ########################################
-      system "ffmpeg -y -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i tmp/#{@sampler.id}-images.txt -c:v libx264 -preset superfast tmp/simpleVideo.mp4"
+      system "ffmpeg -y -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i tmp/#{@sampler.id}-images.txt -c:v libx264 -tune stillimage -preset slow -crf 25 tmp/simpleVideo.mp4"
 
+      p "28____________________________"
       ########################################
       # This is the low-qual vid codec.
       ########################################
@@ -40,7 +41,7 @@ class MakeDownloadSamplerJob
       # be shared with other users. UPLOAD THIS ONE.
       ########################################
 
-      system "ffmpeg -y -i tmp/keepItSimple.mp3 -i tmp/simpleVideo.mp4 -c:v mpeg4 -c:a aac tmp/#{@sampler.id}-sampler.mp4"
+      system "ffmpeg -y -i tmp/keepItSimple.mp3 -i tmp/simpleVideo.mp4 -c:v libx264 -vf format=yuv420p -c:a aac tmp/#{@sampler.id}-sampler.mp4"
 
       @file_name = "#{@sampler.id}-sampler.mp4"
 

@@ -1,6 +1,5 @@
 $(document).on('turbolinks:load', function() {
-
-    $(".edit_track").hide();
+  $(".edit_track").hide();
   if ($(".new-sampler-container").length > 0) {
 
     $(".paperclip-preview").on("click", function() {
@@ -10,7 +9,6 @@ $(document).on('turbolinks:load', function() {
       $(selectFile).change(function(){
         $(updateFile).trigger( "click" );
       })
-
     })
   }
 })

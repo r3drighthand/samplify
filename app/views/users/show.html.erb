@@ -5,6 +5,7 @@
 
 <% if logged_in? %>
   <%= link_to "Logout", logout_path, method: :delete %>
+  <%= link_to "Home", user_path(current_user) %>
 <% end %>
 
 <main class="profile-page">

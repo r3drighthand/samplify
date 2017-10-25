@@ -7,10 +7,12 @@ $(document).on('turbolinks:load', function() {
     $(".mySlides").first().show()
     var audioController = $("audio")[0]
     audioController.volume = 0.35
-    var musicPlaying = false
     var imageIndex = 0
     $(".thumbs").on("click", function(event){
       audioController.currentTime = ($(this).index()) * 30
+      if (audioController.paused){
+        $("#play").trigger( "click" );
+      }
       $("#play").trigger( "click" );
       imageIndex = Math.floor(audioController.currentTime/30)
       $(".thumbs").css("opacity", 1)

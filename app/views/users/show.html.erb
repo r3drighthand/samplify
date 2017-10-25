@@ -1,6 +1,6 @@
 <div class="profile-pic-container">
   <img class="profile-pic" src="<%= @user.profile_pic_url %>" alt="profile picture">
-  <h1 class="profile-name"><%= @user.display_name %></h2>
+  <h2 class="profile-name"><%= @user.display_name %></h2>
 </div>
 
 <main class="profile-page">
@@ -16,7 +16,7 @@
     <% if authorized?(@user) && @user.samplers.empty? %>
       <p>You have not made any samplers yet.</p>
     <% elsif !authorized?(@user) && @user.samplers.empty? %>
-      <p><%= @user.display_name %> has not created any playlists yet.</p>
+      <p id="no-samplers-list"><%= @user.display_name %> has not created any playlists yet.</p>
     <% else %>
     <ul class="list-style-none playlists">
       <%= render partial: "sampler", collection: @user.samplers %>

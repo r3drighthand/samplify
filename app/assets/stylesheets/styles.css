@@ -16,16 +16,17 @@ a:hover {
   color: #F2CC8F;
 }
 
-.profile-pic {
-  border: 3px solid;
-  border-color: red;
-}
-
 * {box-sizing:border-box}
 
 audio {
   width: 100%;
   height: 100px;
+}
+
+p {
+  color: #C3ACCE;
+  font-family: 'Francoise One', sans-serif;
+  font-size: 2em;
 }
 
 #play {
@@ -37,9 +38,20 @@ audio {
   font-family: 'Permanent Marker', cursive;
 }*/
 
+.profile-pic-container {
+  width: 100%;
+}
+
+.profile-pic {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+
 .profile-name {
   font-size: 5em;
   color: #FFF1D0;
+  text-align: center;
 }
 
 .profile-name, a {

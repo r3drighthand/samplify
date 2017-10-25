@@ -10,24 +10,13 @@ $(document).on('turbolinks:load', function() {
     var imageIndex = 0
     var slideIndex = 0
     thumbToOriginal(tar_coord_x, tar_coord_y, imageIndex);
+    $(".thumbs").eq(imageIndex+1).css( "opacity", 0.33 )
     $(".thumbs").on("click", function(event){
       audioController.volume = 0.35
       audioController.currentTime = ($(this).parent().index()) * 30
-      console.log(audioController.currentTime)
       if (audioController.paused){
         $("#play").trigger( "click" );
       }
-      // if ($(".thumbs").first().hasClass('start')) {
-      //   $(".thumbs").first().removeClass("start")
-      //   $(".thumbs").first().addClass("grow")
-      // }
-      // slideIndex = Math.floor(audioController.currentTime/30)
-      // imageIndex = slideIndex * 2
-      // $(".thumbs").css("opacity", 1)
-      // $(".thumbs").eq(imageIndex).css( "opacity", 0.33 )
-      // $(".mySlides").hide()
-      // $(".mySlides").eq(imageIndex).attr("style", "display:block")
-      // thumbToOriginal(tar_coord_x, tar_coord_y, imageIndex);
     })
     var count = 1
     $("#play").on("click", function(event) {
@@ -61,9 +50,7 @@ $(document).on('turbolinks:load', function() {
             $(".thumbs").first().removeClass("start")
             $(".thumbs").first().addClass("grow")
           }
-          console.log("start")
-          console.log(audioController.currentTime)
-          var startingIndex = imageIndex
+          var startingIndex = slideIndex
           if (startingIndex != Math.floor(audioController.currentTime/30)) {
             originalToThumb(imageIndex);
             slideIndex = Math.floor(audioController.currentTime/30)
@@ -74,9 +61,10 @@ $(document).on('turbolinks:load', function() {
             $(".mySlides").eq(slideIndex).attr("style", "display:block")
             thumbToOriginal(tar_coord_x, tar_coord_y, imageIndex);
           }
-        }, 1000)
+        }
       count += 1
-    }
+      }, 1000)
+    })
 
     var downloadChecker = setInterval(function(){
       var audioSource = $("audio").attr("src");

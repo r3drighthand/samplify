@@ -1,4 +1,4 @@
-<h2><%= @sampler.title %></h2>
+<h2 class="sampler-title"><%= @sampler.title %></h2>
 <div class="slideshow-container">
   <%= render partial: @tracks %>
 </div>
@@ -8,7 +8,12 @@
     <%= render partial: "thumbnail_images", locals: { track: track } %>
   <% end %>
 </ul>
-<%= image_tag "play-button.svg", id:"play" %>
+
+<div id="play-buttons">
+  <%= image_tag "pause", id:"pause" %>
+  <%= image_tag "play", id:"play" %>
+</div>
+
 <%= audio_tag("https://s3.us-east-2.amazonaws.com/dbc-team-samplify-test/#{@sampler.id}.mp3") %>
 
 <% if logged_in? %>

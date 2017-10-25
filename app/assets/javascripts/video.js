@@ -1,7 +1,7 @@
 $(document).on('turbolinks:load', function() {
-  var tar_coord_x = $(".slideshow-container").offset().left;
-  var tar_coord_y = $(".slideshow-container").offset().top;
   if (window.location.href.search(/(samplers\/\d+)/) > 0) {
+    var tar_coord_x = $(".slideshow-container").offset().left;
+    var tar_coord_y = $(".slideshow-container").offset().top;
     $("#pause").hide()
     $(".mySlides").hide()
     $(".mySlides").first().show()
@@ -89,7 +89,7 @@ $(document).on('turbolinks:load', function() {
   }
 })
 
-function thumbToOriginal(tar_coord_x, tar_coord_y, imageIndex = 0) {
+function thumbToOriginal(tar_coord_x, tar_coord_y, imageIndex) {
   var this_coord_x = $(".thumbs").eq(imageIndex).offset().left;
   var this_coord_y = $(".thumbs").eq(imageIndex).offset().top;
   console.log("this: ", this_coord_x, this_coord_y)

@@ -2,7 +2,7 @@
   <h2 class="new-sampler-title"><%= @playlist.name %></h2>
     <div class="sampler-buttons">
       <%= button_to "Samplify", sampler_path(@sampler), class: "button", method: :patch %>
-      <%= button_to "Home", user_path(current_user), class: "button" %>
+      <%= button_to "Home", user_path(current_user), class: "button", method: :get %>
     </div>
 
   </div>

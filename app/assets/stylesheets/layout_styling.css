@@ -9,7 +9,7 @@
   display: flex;
   justify-content: space-evenly;
   height: 75%;
-  position: absolute;
+  padding-bottom: 150px;
 }
 
 .playlist-link {

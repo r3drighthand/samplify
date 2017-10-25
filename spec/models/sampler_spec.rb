@@ -9,6 +9,11 @@ describe Sampler do
     expect(@sampler).to be_valid
   end
 
-  it "is invalid without a user"
-  it "belongs to one user"
+  it "is invalid without a user" do
+    expect(build(:sampler, user_id: nil)).not_to be_valid
+  end
+
+  it "belongs to one user" do
+    expect(@sampler.user).to be_a_kind_of(User)
+  end
 end

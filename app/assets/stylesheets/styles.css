@@ -27,15 +27,11 @@ audio {
   height: 100px;
 }
 
-p {
-  color: #F2CC8F;
-  font-family: 'Francoise One', sans-serif;
-  font-size: 2em;
-}
 
 #play, #pause {
   display: flex;
   margin: auto;
+  padding-bottom: 2em;
 }
 
 /*h1 {
@@ -45,6 +41,7 @@ p {
 /*.profile-pic-container {
   width: 100%;
 }*/
+
 
 .profile-pic {
   margin: auto;
@@ -62,6 +59,19 @@ p {
 .profile-name, a {
   font-family: 'Francoise One', sans-serif;
   font-weight: bold;
+}
+
+.text p {
+  color: #F2CC8F;
+  font-family: 'Francoise One', sans-serif;
+  font-size: 2.3em;
+}
+
+.sampler-title {
+  font-family: 'Francoise One', sans-serif;
+  font-size: 4em;
+  color: #FFF1D0;
+  text-align: center;
 }
 
 .playlist-header {
@@ -89,6 +99,33 @@ p {
   list-style: none;
 }
 
+.show-buttons-container {
+  font-size: 2em;
+  margin: .2em;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
+
+}
+
+.show-buttons-container a {
+  margin: auto;
+}
+
+.left {
+
+}
+
+.right {
+
+}
+
+.download-link {
+
+}
+
 /* Slideshow container */
 .slideshow-container {
   max-width: 1000px;
@@ -99,8 +136,8 @@ p {
 /* Caption text */
 .text {
   /*color: #f2f2f2;*/
-  font-size: 45px;
-  padding: 8px 12px;
+  font-size: 0.8em;
+  padding: 3px 3px;
   bottom: 8px;
   width: 100%;
   text-align: center;

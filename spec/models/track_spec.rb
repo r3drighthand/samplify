@@ -9,7 +9,15 @@ describe Track do
     expect(@track).to be_valid
   end
 
-  it "is invalid without a sampler"
-  it "is invalid without a name"
-  it "belongs to a sampler"
+  it "is invalid without a sampler" do
+    expect(build(:track, sampler_id: nil)).not_to be_valid
+  end
+
+  it "is invalid without a name" do
+    expect(build(:track, name: nil)).not_to be_valid
+  end
+
+  it "belongs to a sampler" do
+    expect(@track.sampler).to be_a_kind_of(Sampler)
+  end
 end

@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).on('turbolinks:load', function() {
   $(".playlist-button").on("click", function(event) {
     if ($(".page-content-right").is(":visible")) {
       $(".playlist-button").toggleClass("pressed");

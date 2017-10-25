@@ -4,8 +4,8 @@
 </div>
 
 <% if logged_in? %>
-  <%= link_to "Logout", logout_path, method: :delete %>
-  <%= link_to "Home", user_path(current_user) %>
+  <%= button_to "Logout", logout_path, method: :delete, class: "button" %>
+  <%= button_to "Home", user_path(current_user), class: "button" %>
 <% end %>
 
 <main class="profile-page">

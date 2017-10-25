@@ -16,6 +16,19 @@ a:hover {
   color: #F2CC8F;
 }
 
+.button {
+  font-size: 3em;
+  width: 240px;
+  height: 80px;
+  color: #130303;
+  border: 1px solid #F0C808;
+  font-family: 'Permanent Marker';
+  background-color: #FFF1D0;
+  margin: 15px;
+  /*bottom: 10px;
+  left: 50%;*/
+}
+
 .errors {
   color: red;
 }

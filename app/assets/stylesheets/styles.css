@@ -33,7 +33,7 @@ p {
   font-size: 2em;
 }
 
-#play {
+#play, #pause {
   display: flex;
   margin: auto;
 }

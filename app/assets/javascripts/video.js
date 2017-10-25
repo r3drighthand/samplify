@@ -2,6 +2,7 @@ $(document).on('turbolinks:load', function() {
   var tar_coord_x = $(".slideshow-container").offset().left;
   var tar_coord_y = $(".slideshow-container").offset().top;
   if (window.location.href.search(/(samplers\/\d+)/) > 0) {
+    $("#pause").hide()
     $(".mySlides").hide()
     $(".mySlides").first().show()
     var audioController = $("audio")[0]
@@ -18,11 +19,15 @@ $(document).on('turbolinks:load', function() {
       }
     })
     var count = 1
-    $("#play").on("click", function(event) {
+    $("#play-buttons").on("click", function(event) {
       if (audioController.paused){
         audioController.play();
+        $("#pause").show()
+        $("#play").hide()
       } else {
         audioController.pause();
+        $("#play").show()
+        $("#pause").hide()
       }
       var playCount = count
       setInterval(function() {

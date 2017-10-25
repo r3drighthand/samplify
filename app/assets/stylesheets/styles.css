@@ -57,3 +57,27 @@ audio {
   from {opacity: .4}
   to {opacity: 1}
 }
+
+/*Animation CSS*/
+
+.grow {
+  transition: transform 2s;
+  transform-origin: top left;
+}
+
+.slide {
+  width: 100px;
+  height: 100px;
+}
+
+.dupe-thumbs {
+  position: relative;
+}
+
+.thumbs {
+  top: 0;
+  left: 0;
+  position: absolute;
+}
+
+

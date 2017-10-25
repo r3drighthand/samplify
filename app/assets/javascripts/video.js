@@ -57,7 +57,7 @@ $(document).on('turbolinks:load', function() {
         $(".thumbs").eq(imageIndex).css("transform", "translate(" + move_coord_x + "px, " + move_coord_y + "px) scale(10)");
         $(".mySlides").hide()
         $(".mySlides").eq(imageIndex).attr("style", "display:block")
-        console.log(imageIndex)
+        // console.log(imageIndex)
       }
     }, 1000)
     count += 1

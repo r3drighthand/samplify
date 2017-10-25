@@ -5,14 +5,14 @@
 
 <main class="profile-page">
   <section class="page-content-left">
-    <h3>Spotify Playlists</h3>
+    <h3 class="playlist-header">Spotify Playlists</h3>
     <ul class="list-style-none playlists">
       <%= render partial: "playlist", collection: @spotify_user.playlists %>
     </ul>
   </section>
 
   <section class="page-content-right">
-    <h3>Created Samplers</h3>
+    <h3 class="playlist-header">Created Samplers</h3>
     <% if authorized?(@user) && @user.samplers.empty? %>
       <p>You have not made any samplers yet.</p>
     <% elsif !authorized?(@user) && @user.samplers.empty? %>

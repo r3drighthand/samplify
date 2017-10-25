@@ -1,5 +1,24 @@
+body {
+  margin: 2%;
+  background-color: #5B616A;
+}
+
 ul {
   list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: #F0C808;
+}
+
+a:hover {
+  color: #F2CC8F;
+}
+
+.profile-pic {
+  border: 3px solid;
+  border-color: red;
 }
 
 * {box-sizing:border-box}
@@ -12,6 +31,26 @@ audio {
 #play {
   display: flex;
   margin: auto;
+}
+
+/*h1 {
+  font-family: 'Permanent Marker', cursive;
+}*/
+
+.profile-name {
+  font-size: 5em;
+  color: #FFF1D0;
+}
+
+.profile-name, a {
+  font-family: 'Francoise One', sans-serif;
+  font-weight: bold;
+}
+
+.playlist-header {
+  font-family: 'Francoise One', sans-serif;
+  font-size: 3em;
+  color: #FFF1D0;
 }
 
 .thumbs-container {

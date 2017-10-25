@@ -83,8 +83,9 @@ $(document).on('turbolinks:load', function() {
       });
     }, 5000)
   } else {
-    for (var i = 1; i < 9999; i++)
+    for (var i = 1; i < 9999; i++) {
       window.clearInterval(i)
+    }
   }
 })
 

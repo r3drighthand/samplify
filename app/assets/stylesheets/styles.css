@@ -71,6 +71,8 @@ audio {
 }
 
 .dupe-thumbs {
+  width: 100px;
+  height: 100px;
   position: relative;
 }
 
@@ -78,6 +80,11 @@ audio {
   top: 0;
   left: 0;
   position: absolute;
+}
+
+.slide-location {
+  width: 1000px;
+  height: 1000px;
 }
 
 

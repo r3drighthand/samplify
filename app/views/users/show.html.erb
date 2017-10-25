@@ -1,23 +1,27 @@
-<div class="profile-pic-container">
-  <img class="profile-pic" src="<%= @user.profile_pic_url %>" alt="profile picture">
-  <h2 class="profile-name"><%= @user.display_name %></h2>
-</div>
-
 <% if logged_in? %>
   <%= link_to "Logout", logout_path, method: :delete %>
   <%= link_to "Home", user_path(current_user) %>
 <% end %>
 
+<div class="profile-pic-container">
+  <img class="profile-pic" src="<%= @user.profile_pic_url %>" alt="profile picture">
+  <h2 class="profile-name"><%= @user.display_name %></h2>
+</div>
+
+<div class="profile-buttons">
+  <button class="playlist-header">Create Sampler</button>
+  <button class="sampler-header">View Samplers</button>
+</div>
+
+
 <main class="profile-page">
   <section class="page-content-left">
-    <h3 class="playlist-header">Spotify Playlists</h3>
     <ul class="list-style-none playlists">
       <%= render partial: "playlist", collection: @spotify_user.playlists %>
     </ul>
   </section>
 
   <section class="page-content-right">
-    <h3 class="playlist-header">Created Samplers</h3>
     <% if authorized?(@user) && @user.samplers.empty? %>
       <p>You have not made any samplers yet.</p>
     <% elsif !authorized?(@user) && @user.samplers.empty? %>

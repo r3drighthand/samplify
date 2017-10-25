@@ -64,10 +64,19 @@ p {
   font-weight: bold;
 }
 
-.playlist-header {
+.playlist-header, .sampler-header {
   font-family: 'Francoise One', sans-serif;
   font-size: 3em;
   color: #FFF1D0;
+  width: 50%;
+  margin: 0;
+}
+
+.profile-buttons {
+  position: relative;
+  height: 70px;
+  width: 100%;
+  display: flex;
 }
 
 .new-sampler-title {

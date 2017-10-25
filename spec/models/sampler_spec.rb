@@ -2,7 +2,6 @@ require 'rails_helper'
 
 describe Sampler do
   before(:each) do
-    @user = build(:user)
     @sampler = build(:sampler)
   end
 

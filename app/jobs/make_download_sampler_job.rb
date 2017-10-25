@@ -22,9 +22,9 @@ class MakeDownloadSamplerJob
       ########################################
       # This is the high-qual vid codec
       ########################################
-      system "ffmpeg -y -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i tmp/#{@sampler.id}-images.txt -c:v libx264 -tune stillimage -preset slow -crf 25 tmp/simpleVideo.mp4"
+      system "ffmpeg -y -f concat -safe 0 -protocol_whitelist 'file,http,https,tcp,tls' -i tmp/#{@sampler.id}-images.txt -c:v libx264 -tune stillimage -preset slow -crf 20 tmp/simpleVideo.mp4"
 
-      p "28____________________________"
+      p "22____________________________"
       ########################################
       # This is the low-qual vid codec.
       ########################################

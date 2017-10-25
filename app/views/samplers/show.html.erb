@@ -11,9 +11,11 @@
 <%= image_tag "play-button.svg", id:"play" %>
 <%= audio_tag("https://s3.us-east-2.amazonaws.com/dbc-team-samplify-test/#{@sampler.id}.mp3") %>
 
-<div class="home-link">
+<% if logged_in? %>
   <%= link_to "Home", user_path(current_user) %>
-</div>
+<% else %>
+  <%= link_to 'Sign in with Spotify', '/auth/spotify?show_dialog=true' %>
+<% end %>
 
 <%= link_to "Open in Spotify", @sampler.spotify_url %>
 

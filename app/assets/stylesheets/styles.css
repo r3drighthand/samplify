@@ -16,6 +16,10 @@ a:hover {
   color: #F2CC8F;
 }
 
+.errors {
+  color: red;
+}
+
 * {box-sizing:border-box}
 
 audio {
@@ -94,7 +98,7 @@ p {
 
 /* Caption text */
 .text {
-  color: #f2f2f2;
+  /*color: #f2f2f2;*/
   font-size: 45px;
   padding: 8px 12px;
   bottom: 8px;
@@ -119,3 +123,39 @@ p {
   from {opacity: .4}
   to {opacity: 1}
 }
+
+/*Animation CSS*/
+
+.start {
+  transition: transform 0s;
+  transform-origin: top left;
+}
+
+.grow {
+  transition: transform 2s;
+  transform-origin: top left;
+}
+
+.slide {
+  width: 100px;
+  height: 100px;
+}
+
+.dupe-thumbs {
+  width: 100px;
+  height: 100px;
+  position: relative;
+}
+
+.thumbs {
+  top: 0;
+  left: 0;
+  position: absolute;
+}
+
+.slide-location {
+  width: 1000px;
+  height: 1000px;
+}
+
+

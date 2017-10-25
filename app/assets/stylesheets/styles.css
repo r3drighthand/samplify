@@ -74,10 +74,29 @@ audio {
   text-align: center;
 }
 
-.playlist-header {
+.playlist-button, .sampler-button {
   font-family: 'Francoise One', sans-serif;
   font-size: 3em;
   color: #FFF1D0;
+  width: 50%;
+  outline: none;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.pressed {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.profile-buttons {
+  position: relative;
+  height: 70px;
+  width: 100%;
+  display: flex;
 }
 
 .new-sampler-title {

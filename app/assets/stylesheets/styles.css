@@ -58,8 +58,7 @@ a:hover {
   margin: 25px;
   margin-bottom: 25px;
   display: inline-block;
-  /*bottom: 10px;
-  left: 50%;*/
+  border-radius: 10%;
 }
 
 .errors {
@@ -83,21 +82,20 @@ h1 {
   font-family: 'Permanent Marker', cursive;
 }
 
-/*.profile-pic-container {
-  width: 100%;
-}*/
-
 .profile-pic {
   margin: auto;
-  width: 100%;
+  width: 40%;
+  border-radius: 25%;
   padding: 10px;
 }
 
 .profile-name {
   font-size: 5em;
-  /*color: #FFF1D0;*/
-  color: #EB6534;
-  text-align: center;
+  display: inline-block;
+  color: #E85A4F;
+  margin: auto;
+  position: absolute;
+  top: 2em;
 }
 
 .profile-name, a {
@@ -135,14 +133,14 @@ h1 {
   color: #FFF1D0;
   width: 50%;
   outline: none;
-  background-color: #4CAF50;
+  background-color: #E85A4F;
   border: none;
   border-radius: 15px;
   box-shadow: 0 9px #999;
 }
 
 .pressed {
-  background-color: #3e8e41;
+  background-color: #E98074;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }

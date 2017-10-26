@@ -79,7 +79,6 @@ $(document).on('turbolinks:load', function() {
       request.done(function(response) {
         $(".download-link").html("")
         $(".download-link").append(response)
-        // clearInterval(downloadChecker);
       });
     }, 5000)
   } else {

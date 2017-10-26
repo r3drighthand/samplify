@@ -77,6 +77,7 @@ $(document).on('turbolinks:load', function() {
         url: url
       });
       request.done(function(response) {
+        console.log(response)
         $(".download-link").html("")
         $(".download-link").append(response)
         clearInterval(downloadChecker);

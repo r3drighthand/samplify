@@ -162,7 +162,7 @@ audio {
   list-style: none;
 }
 
-.show-buttons-container {
+/*.show-buttons-container {
   font-size: 2em;
   margin: .2em;
   padding: 0;
@@ -170,23 +170,26 @@ audio {
   flex-wrap: wrap;
   justify-content: center;
   list-style: none;
+}*/
 
-}
-
-.show-buttons-container a {
-  margin: auto;
+.show-buttons-container input {
+  width: 25%;
 }
 
 .left {
-
+  float: left;
 }
 
 .right {
-
+  float: right;
 }
 
-.download-link {
-
+.download-link .center {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
 }
 
 /* Slideshow container */

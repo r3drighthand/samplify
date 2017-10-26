@@ -1,4 +1,4 @@
-<%= link_to "Download", @sampler.s3_url,  download: "#{@sampler.title}"%>
+<%= button_to "Download", @sampler.s3_url,  download: "#{@sampler.title}", class: "button center", method: :get %>
 
 
 

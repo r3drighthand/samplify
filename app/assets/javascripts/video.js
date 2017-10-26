@@ -1,10 +1,10 @@
 $(document).on('turbolinks:load', function() {
   if (window.location.href.search(/(samplers\/\d+)/) > 0) {
-    var tar_coord_x = $(".slideshow-container").offset().left;
-    var tar_coord_y = $(".slideshow-container").offset().top;
     $("#pause").hide()
     $(".mySlides").hide()
     $(".mySlides").first().show()
+    var tar_coord_x = $(".slideshow-container").offset().left;
+    var tar_coord_y = $(".slideshow-container").offset().top;
     var audioController = $("audio")[0]
     audioController.volume = 0.35
     var imageIndex = 0

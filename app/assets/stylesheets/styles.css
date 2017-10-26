@@ -1,8 +1,8 @@
 body {
-  margin: 2%;
+  /*margin: 2%;*/
   background-color: #EAE7DC;
   /*overflow: hidden;*/
-
+  /*height: 100%;*/
 }
 
 ul {
@@ -116,11 +116,15 @@ a {
   font-size: 2.3em;
   overflow: hidden;
   text-align: center;
+  /*vertical-align: 100%*/
+  margin: 5px;
+
+
 }
 
 .show-track-info {
-  max-width: 100%;
-  overflow: hidden;
+/*  max-width: 100%;
+  overflow: hidden;*/
 }
 
 .track-info {
@@ -134,8 +138,8 @@ a {
   font-size: 4em;
   color: #E85A4F;
   text-align: center;
-  margin: 20px;
-  margin-bottom: 40px;
+  margin: 10px;
+  /*margin-bottom: 10px;*/
 }
 
 .playlist-button, .sampler-button {
@@ -247,8 +251,8 @@ a {
 }
 
 .slide-location {
-  width: 980px;
-  height: 980px;
+  width: 1000px;
+  height: 1000px;
 }
 
 /*Splash Page*/

@@ -129,7 +129,7 @@ h1 {
 
 .playlist-button, .sampler-button {
   font-family: 'Francoise One', sans-serif;
-  font-size: 4em;
+  font-size: 3.5em;
   color: #FFF1D0;
   width: 50%;
   outline: none;
@@ -137,6 +137,8 @@ h1 {
   border: none;
   border-radius: 15px;
   box-shadow: 0 9px #999;
+  margin: 5px;
+
 }
 
 .pressed {

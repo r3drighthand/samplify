@@ -32,6 +32,5 @@
 <div class="session-buttons">
   <% if logged_in? %>
     <%= button_to "Logout", logout_path, method: :delete, class: "button" %>
-    <%= button_to "Home", user_path(current_user), class: "button" %>
   <% end %>
 </div>

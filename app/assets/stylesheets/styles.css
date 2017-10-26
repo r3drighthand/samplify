@@ -1,6 +1,8 @@
 body {
   margin: 2%;
-  background-color: #0A2239;
+  background-color: #EAE7DC;
+  overflow: hidden;
+
 }
 
 ul {
@@ -9,7 +11,7 @@ ul {
 
 a {
   text-decoration: none;
-  color: #F0C808;
+  color: #E85A4F;
 }
 
 a:hover {
@@ -50,9 +52,9 @@ a:hover {
   width: 300px;
   height: 100px;
   color: #130303;
-  border: 1px solid #F0C808;
+  border: 1px solid #E98074;
   font-family: 'Permanent Marker';
-  background-color: #FFF1D0;
+  background-color: #D8C3A5;
   margin: 25px;
   margin-bottom: 25px;
   display: inline-block;
@@ -71,21 +73,19 @@ audio {
   height: 100px;
 }
 
-
 #play, #pause {
   display: flex;
   margin: auto;
   padding-bottom: 2em;
 }
 
-/*h1 {
+h1 {
   font-family: 'Permanent Marker', cursive;
-}*/
+}
 
 /*.profile-pic-container {
   width: 100%;
 }*/
-
 
 .profile-pic {
   margin: auto;
@@ -105,17 +105,28 @@ audio {
   font-weight: bold;
 }
 
-.text p {
-  color: #F2CC8F;
+/* Caption text */
+.show-track-info p {
+  color: #E85A4F;
   font-family: 'Francoise One', sans-serif;
   font-size: 2.3em;
+  overflow: hidden;
+  text-align: center;
+}
+
+.track-info {
+  max-width: 300px;
+  height: 300px;
+  overflow: hidden;
 }
 
 .sampler-title {
   font-family: 'Francoise One', sans-serif;
   font-size: 4em;
-  color: #FFF1D0;
+  color: #E85A4F;
   text-align: center;
+  margin: 20px;
+  margin-bottom: 40px;
 }
 
 .playlist-button, .sampler-button {
@@ -145,12 +156,17 @@ audio {
 
 .new-sampler-title {
   font-family: 'Permanent Marker', sans-serif;
-  color: #EB6534;
+  color: #E85A4F;
 }
 
 .track-name {
   font-family: 'Francoise One', sans-serif;
-  color: #437F97;
+  color: #E85A4F;
+  overflow-wrap: normal;
+}
+
+.track-name h3 {
+  overflow-wrap: break-word;
 }
 
 .thumbs-container {
@@ -162,17 +178,8 @@ audio {
   list-style: none;
 }
 
-/*.show-buttons-container {
-  font-size: 2em;
-  margin: .2em;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  list-style: none;
-}*/
-
 .show-buttons-container input {
+  font-size: 2.5em;
   width: 25%;
 }
 
@@ -197,34 +204,6 @@ audio {
   max-width: 1000px;
   position: relative;
   margin: auto;
-}
-
-/* Caption text */
-.text {
-  /*color: #f2f2f2;*/
-  font-size: 0.8em;
-  padding: 3px 3px;
-  bottom: 8px;
-  width: 100%;
-  text-align: center;
-}
-
-/* Fading animation */
-.fade {
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 1.5s;
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
-
-@-webkit-keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
-}
-
-@keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
 }
 
 /*Animation CSS*/

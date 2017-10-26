@@ -46,8 +46,6 @@ class SamplersController < ApplicationController
 
     s3 = Aws::S3::Resource.new(region: ENV['AWS_REGION'])
     obj = s3.bucket('dbc-team-samplify-test').object(@file_name)
-    # PROBLEM V
-    p @file_name
     obj.upload_file("tmp/#{@file_name}")
   end
 

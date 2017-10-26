@@ -1,7 +1,7 @@
 body {
   margin: 2%;
   background-color: #EAE7DC;
-  overflow: hidden;
+  /*overflow: hidden;*/
 
 }
 
@@ -214,7 +214,7 @@ h1 {
 }
 
 .grow {
-  transition: transform 2s;
+  transition: transform 1s;
   transform-origin: top left;
 }
 
@@ -236,8 +236,29 @@ h1 {
 }
 
 .slide-location {
-  width: 1000px;
-  height: 1000px;
+  width: 980px;
+  height: 980px;
 }
 
+/*Splash Page*/
+#splash-img {
+  width: 100%;
+}
+
+#splash-title {
+  position: absolute;
+  top: 7em;
+  left: 2.7em;
+  font-size: 6.5em;
+}
+
+#login {
+  text-align: center;
+  font-size: 4em;
+  border: 5px solid #E98074;
+  border-radius: 35px;
+  margin: 100px;
+  height: 200px;
+  padding: 55px;
+}
 

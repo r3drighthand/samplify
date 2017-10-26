@@ -1,10 +1,10 @@
 <li class="dupe-thumbs">
   <% if @tracks.index(track) == 0 %>
-  <img class="slide thumbs start" src="<%= track.image.url(:original) %>">
+  <img class="slide thumbs start" src="<%= track.image.url(:large) %>">
   <% else %>
-  <img class="slide thumbs grow" src="<%= track.image.url(:original) %>">
+  <img class="slide thumbs grow" src="<%= track.image.url(:large) %>">
   <% end %>
-  <img class="slide thumbs" src="<%= track.image.url(:original) %>">
+  <img class="slide thumbs" src="<%= track.image.url(:large) %>">
 </li>
 
 

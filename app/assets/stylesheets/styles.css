@@ -98,7 +98,13 @@ h1 {
   top: 2em;
 }
 
-.profile-name, a {
+.profile-name {
+  font-weight: bold;
+  font-family: 'Permanent Marker', cursive;
+  margin-left: 2%;
+}
+
+a {
   font-family: 'Francoise One', sans-serif;
   font-weight: bold;
 }
@@ -119,7 +125,7 @@ h1 {
 }
 
 .sampler-title {
-  font-family: 'Francoise One', sans-serif;
+  font-family: 'Permanent Marker';
   font-size: 4em;
   color: #E85A4F;
   text-align: center;
@@ -128,7 +134,7 @@ h1 {
 }
 
 .playlist-button, .sampler-button {
-  font-family: 'Francoise One', sans-serif;
+  font-family: 'Permanent Marker';
   font-size: 3.5em;
   color: #FFF1D0;
   width: 50%;
@@ -138,7 +144,7 @@ h1 {
   border-radius: 15px;
   box-shadow: 0 9px #999;
   margin: 5px;
-
+  height: 100px;
 }
 
 .pressed {

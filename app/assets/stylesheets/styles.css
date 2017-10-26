@@ -16,6 +16,50 @@ a:hover {
   color: #F2CC8F;
 }
 
+.wrapper {
+  margin-bottom: -100px;
+}
+
+.session-buttons {
+  position: fixed;
+  display: flex;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  height: 100px;
+  padding-bottom: 100px;
+  margin: 0 auto;
+  justify-content: space-around;
+  margin-bottom: 80px;
+/*  vertical-align: bottom;
+*/}
+
+.sampler-buttons {
+  justify-content: space-around;
+  margin: 0 auto;
+  postion: fixed;
+  display: flex;
+  width: 100%;
+  height: 100px;
+  padding-bottom: 100px;
+  margin-bottom: 40px;
+}
+
+.button {
+  font-size: 4em;
+  width: 300px;
+  height: 100px;
+  color: #130303;
+  border: 1px solid #F0C808;
+  font-family: 'Permanent Marker';
+  background-color: #FFF1D0;
+  margin: 25px;
+  margin-bottom: 25px;
+  display: inline-block;
+  /*bottom: 10px;
+  left: 50%;*/
+}
+
 .errors {
   color: red;
 }
@@ -76,7 +120,7 @@ audio {
 
 .playlist-button, .sampler-button {
   font-family: 'Francoise One', sans-serif;
-  font-size: 3em;
+  font-size: 4em;
   color: #FFF1D0;
   width: 50%;
   outline: none;
@@ -118,7 +162,7 @@ audio {
   list-style: none;
 }
 
-.show-buttons-container {
+/*.show-buttons-container {
   font-size: 2em;
   margin: .2em;
   padding: 0;
@@ -126,23 +170,26 @@ audio {
   flex-wrap: wrap;
   justify-content: center;
   list-style: none;
+}*/
 
-}
-
-.show-buttons-container a {
-  margin: auto;
+.show-buttons-container input {
+  width: 25%;
 }
 
 .left {
-
+  float: left;
 }
 
 .right {
-
+  float: right;
 }
 
-.download-link {
-
+.download-link .center {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
 }
 
 /* Slideshow container */

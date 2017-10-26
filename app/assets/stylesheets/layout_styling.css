@@ -9,8 +9,8 @@
 /*  display: flex;*/
   justify-content: space-evenly;
   height: 75%;
+  padding-bottom: 150px;
   width: 100%;
-  position: absolute;
 }
 
 .playlist-link {

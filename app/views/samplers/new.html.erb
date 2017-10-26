@@ -1,12 +1,10 @@
 <main class="new-sampler-container">
-  <%= link_to "Home", user_path(current_user) %>
   <h2 class="new-sampler-title"><%= @playlist.name %></h2>
-  <div class="button-link">
-    <%= link_to sampler_path(@sampler), method: :patch do %>
-      <div class="samplify-button-block">
-        Samplify this playlist!
-      </div>
-    <% end %>
+    <div class="sampler-buttons">
+      <%= button_to "Samplify", sampler_path(@sampler), class: "button", method: :patch %>
+      <%= button_to "Home", user_path(current_user), class: "button", method: :get %>
+    </div>
+
   </div>
 
   <div class="track-list">

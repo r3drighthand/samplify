@@ -14,7 +14,7 @@ class UsersController < ApplicationController
       display_name = spotify_user.email
     end
     # this should be a validation callback
-    if spotify_user.images.nil?
+    if spotify_user.images.nil? || spotify_user.images.empty?
     # if spotify_user.images.src == unknown
       profile_pic_url = "https://img.buzzfeed.com/buzzfeed-static/static/2014-11/7/18/enhanced/webdr01/longform-original-18085-1415403731-23.jpg?crop=612:612;221,96&downsize=715:*&output-format=auto&output-quality=auto"
     else

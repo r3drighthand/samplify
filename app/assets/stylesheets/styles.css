@@ -118,6 +118,11 @@ a {
   text-align: center;
 }
 
+.show-track-info {
+  max-width: 100%;
+  overflow: hidden;
+}
+
 .track-info {
   max-width: 300px;
   height: 300px;

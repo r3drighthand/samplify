@@ -70,6 +70,7 @@ $(document).on('turbolinks:load', function() {
       }, 1000)
     })
     var downloadChecker = setInterval(function(){
+      console.log("checking")
       var audioSource = $("audio").attr("src");
       var samplerID = /\d+(?=.mp3)/g.exec(audioSource);
       var url = "/samplers/check/" + samplerID
@@ -77,9 +78,11 @@ $(document).on('turbolinks:load', function() {
         url: url
       });
       request.done(function(response) {
+        console.log("done")
+        console.log(response)
         $(".download-link").html("")
         $(".download-link").append(response)
-        clearInterval(downloadChecker);
+        // clearInterval(downloadChecker);
       });
     }, 5000)
   } else {

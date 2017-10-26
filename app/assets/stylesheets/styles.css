@@ -1,7 +1,7 @@
 body {
   margin: 2%;
   background-color: #EAE7DC;
-  overflow: hidden;
+  /*overflow: hidden;*/
 
 }
 
@@ -98,7 +98,13 @@ h1 {
   top: 2em;
 }
 
-.profile-name, a {
+.profile-name {
+  font-weight: bold;
+  font-family: 'Permanent Marker', cursive;
+  margin-left: 2%;
+}
+
+a {
   font-family: 'Francoise One', sans-serif;
   font-weight: bold;
 }
@@ -112,6 +118,11 @@ h1 {
   text-align: center;
 }
 
+.show-track-info {
+  max-width: 100%;
+  overflow: hidden;
+}
+
 .track-info {
   max-width: 300px;
   height: 300px;
@@ -119,7 +130,7 @@ h1 {
 }
 
 .sampler-title {
-  font-family: 'Francoise One', sans-serif;
+  font-family: 'Permanent Marker';
   font-size: 4em;
   color: #E85A4F;
   text-align: center;
@@ -128,7 +139,7 @@ h1 {
 }
 
 .playlist-button, .sampler-button {
-  font-family: 'Francoise One', sans-serif;
+  font-family: 'Permanent Marker';
   font-size: 3.5em;
   color: #FFF1D0;
   width: 50%;
@@ -138,7 +149,7 @@ h1 {
   border-radius: 15px;
   box-shadow: 0 9px #999;
   margin: 5px;
-
+  height: 100px;
 }
 
 .pressed {
@@ -214,7 +225,7 @@ h1 {
 }
 
 .grow {
-  transition: transform 2s;
+  transition: transform 1s;
   transform-origin: top left;
 }
 
@@ -236,8 +247,39 @@ h1 {
 }
 
 .slide-location {
-  width: 1000px;
-  height: 1000px;
+  width: 980px;
+  height: 980px;
 }
 
+/*Splash Page*/
+#splash-img {
+  width: 100%;
+}
+
+#splash-title {
+  position: absolute;
+  top: 7em;
+  left: 2.7em;
+  font-size: 6.5em;
+}
+
+#login {
+  text-align: center;
+  font-size: 3em;
+  border: 5px solid #E98074;
+  border-radius: 35px;
+  margin: 100px;
+  height: 200px;
+  padding: 28px;
+}
+
+#login a {
+  vertical-align: 100%;
+  margin-right: 15px;
+}
+
+#spotify {
+  width: 20%;
+  display: inline-block;
+}
 

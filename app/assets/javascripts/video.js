@@ -79,7 +79,6 @@ $(document).on('turbolinks:load', function() {
       request.done(function(response) {
         $(".download-link").html("")
         $(".download-link").append(response)
-        clearInterval(downloadChecker);
       });
     }, 5000)
   } else {
@@ -92,10 +91,8 @@ $(document).on('turbolinks:load', function() {
 function thumbToOriginal(tar_coord_x, tar_coord_y, imageIndex) {
   var this_coord_x = $(".thumbs").eq(imageIndex).offset().left;
   var this_coord_y = $(".thumbs").eq(imageIndex).offset().top;
-  console.log("this: ", this_coord_x, this_coord_y)
   var move_coord_x = tar_coord_x - this_coord_x;
   var move_coord_y = tar_coord_y - this_coord_y;
-  console.log("move: ", move_coord_x, move_coord_y)
   $(".thumbs").eq(imageIndex).css("transform", "translate(" + move_coord_x + "px, " + move_coord_y + "px) scale(10)");
 }
 

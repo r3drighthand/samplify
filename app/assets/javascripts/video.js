@@ -85,7 +85,7 @@ $(document).on('turbolinks:load', function() {
     for (var i = 1; i < 9999; i++) {
       window.clearInterval(i)
     }
-    $("#spotify").on("click", function() {
+    $("#spotify-logo").on("click", function() {
       $("a")[0].click();
     })
   }

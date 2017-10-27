@@ -19,6 +19,12 @@
   margin-bottom: .2em;
 }
 
+.no-samplers {
+  color: #E85A4F;
+  font-family: 'Francoise One', sans-serif;
+  font-weight: bold;
+}
+
 .profile-pic-container {
   height: 25%;
 }

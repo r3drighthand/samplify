@@ -18,9 +18,13 @@
 
   <section class="page-content-right">
     <% if authorized?(@user) && @user.samplers.empty? %>
-      <p>You have not made any samplers yet.</p>
+    <ul class="list-style-none playlists">
+      <li class="playlist-link no-samplers">You don't have any samplers.</li>
+    </ul>
     <% elsif !authorized?(@user) && @user.samplers.empty? %>
-      <p id="no-samplers-list"><%= @user.display_name %> has not created any playlists yet.</p>
+    <ul class="list-style-none playlists">
+      <li class="playlist-link no-samplers"><%= @user.display_name %> doesn't have any samplers.</li>
+    </ul>
     <% else %>
     <ul class="list-style-none playlists">
       <%= render partial: "sampler", collection: @user.samplers %>

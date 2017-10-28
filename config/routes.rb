@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :samplers, only: [:new, :show, :update]
   root "users#index"
 
-  get "/auth/spotify/callback", to: 'users#spotify'
+  get "/auth/spotify/callback/", to: 'users#spotify'
 
   delete "/logout", to: "sessions#destroy", as: :logout
 

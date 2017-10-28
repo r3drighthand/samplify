@@ -5,8 +5,9 @@ class UsersController < ApplicationController
   end
 
   def spotify
+    p params
     spotify_user = RSpotify::User.new(request.env['omniauth.auth'])
-
+    p spotify_user
     # this should be a validation callback
     if spotify_user.display_name
       display_name = spotify_user.display_name

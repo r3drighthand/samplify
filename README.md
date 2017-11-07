@@ -4,7 +4,7 @@ Samplify allows users to transform a Spotify playlist into an easily shareable a
 
 ## Authored by
 
-* Gilad Shanan (@giladshanan)
+* Gilad Shanan ([@giladshanan](https://github.com/giladshanan)
 * Sam Teitze (@samteitze)
 * Brian Lin (@lin-brian-l)
 * Ryan McCool (@r3drighthand)

@@ -32,4 +32,4 @@ Samplify allows users to transform a Spotify playlist into an easily shareable a
 
 ## About Samplify
 
-This project was created in ~6 days in our final week at Dev Bootcamp.
+This project was created in 8 days during our final week at Dev Bootcamp.

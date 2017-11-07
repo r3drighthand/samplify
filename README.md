@@ -1,13 +1,13 @@
-# Samplify
+# [Samplify](https://samplify-dbc.herokuapp.com/)
 
 Samplify allows users to transform a Spotify playlist into an easily shareable and downloadable video sampler. Samplers contain a customizable image and 30 second clip for each song in the playlist.
 
 ## Authored by
 
-* Gilad Shanan ([@giladshanan](https://github.com/giladshanan)
-* Sam Teitze (@samteitze)
-* Brian Lin (@lin-brian-l)
-* Ryan McCool (@r3drighthand)
+* Gilad Shanan ([@giladshanan](https://github.com/giladshanan))
+* Sam Teitze ([@samteitze](https://github.com/samtietze))
+* Brian Lin ([@lin-brian-l](https://github.com/lin-brian-l))
+* Ryan McCool ([@r3drighthand](https://github.com/r3drighthand))
 
 ## Usage
 
